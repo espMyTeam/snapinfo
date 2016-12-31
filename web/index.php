@@ -73,10 +73,10 @@
                    <h4> Login with facebook <strong> / </strong>Google :</h4>
                     <br />
                     <a href="index.html" class="btn btn-social btn-facebook">
-                            <i class="fa fa-facebook"></i>&nbsp; Facebook Account</a>
-                    &nbsp;OR&nbsp;
+                            <i class="fa fa-facebook"></i>&nbsp; Compte Facebook</a>
+                    &nbsp;OU&nbsp;
                     <a href="index.html" class="btn btn-social btn-google">
-                            <i class="fa fa-google-plus"></i>&nbsp; Google Account</a>
+                            <i class="fa fa-google-plus"></i>&nbsp;Compte Google</a>
                     <hr />
                      <h4> Ou identifier-vous avec <strong> Un compte SNAPINFO :</strong></h4>
                     <br />

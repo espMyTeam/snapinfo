@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+<?php
+include_once("../server/baseConf.php");
+?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
