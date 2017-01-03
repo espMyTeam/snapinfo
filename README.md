@@ -2,9 +2,9 @@
 SNAP-INFO: partager ses évènements avec des photo à temps réel
 
 ## Acteurs #
-- utiliateur
-- partenaire
-- structure
++ utiliateur
++ partenaire
++ structure
 
 ## fonctionnalités #
 ### Coté utilisateur: #
