@@ -14,7 +14,7 @@ SNAP-INFO: partager ses évènements avec des photo à temps réel
 - Choix du type de structure (menu select)
 - envoie des données (photo+données)
 
-#### Coté serveur: #
+### Coté serveur: #
 - stockage des adresses géographiques (lat/long) des structures
 - geocoding/reverse geocoding
 - Stockage dans la base de données su serveur principal
