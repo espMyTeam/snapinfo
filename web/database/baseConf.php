@@ -4,8 +4,8 @@
 *
 */
 	define("USERNAME", "root");
-	define("PASSWORD", "root"); //sWEuFr7RmjZ4
-	define("BASENAME", "snapinfo"); //bustracking
+	define("PASSWORD", "root");
+	define("BASENAME", "snapclient");
 	define("HOSTNAME", "localhost");
 
 ?>

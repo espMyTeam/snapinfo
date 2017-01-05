@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<?php include_once("commun/controlleur.php");?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -8,7 +9,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Free Responsive Admin Theme - ZONTAL</title>
+    <title>SNAPInfo | Login</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
@@ -70,22 +71,27 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                   <h4> Login with facebook <strong> / </strong>Google :</h4>
-                    <br />
-                    <a href="index.html" class="btn btn-social btn-facebook">
-                            <i class="fa fa-facebook"></i>&nbsp; Compte Facebook</a>
-                    &nbsp;OU&nbsp;
-                    <a href="index.html" class="btn btn-social btn-google">
-                            <i class="fa fa-google-plus"></i>&nbsp;Compte Google</a>
                     <hr />
-                     <h4> Ou identifier-vous avec <strong> Un compte SNAPINFO :</strong></h4>
+                     <h4> identifiez-vous avec <strong> Votre compte SNAPInfo :</strong></h4>
                     <br />
-                     <label>Login : </label>
-                        <input type="text" class="form-control" />
-                        <label>Mot de passe :  </label>
-                        <input type="password" class="form-control" />
-                        <hr />
-                        <a href="index.html" class="btn btn-info"><span class="glyphicon glyphicon-user"></span> &nbsp;Valider </a>&nbsp;
+                    <?php
+                        if ($_REQUEST["errolog"]=="erreur") {?>
+                          <div class="alert alert-block alert-danger fade in">
+                              <button data-dismiss="alert" class="close close-sm" type="button">
+                                  <i class="icon-remove"></i>
+                              </button>
+                               Le login ou le mot de passe est incorrect
+                          </div>
+                    <?php    }
+                    ?>
+                    <form method="POST" action="index.php">
+                       <label>Login : </label>
+                          <input type="text" name="login" class="form-control" />
+                          <label>Mot de passe :  </label>
+                          <input type="password" name="password" class="form-control" />
+                          <hr />
+                          <button type="submit"><span class="glyphicon glyphicon-user"></span> &nbsp;Valider </button>&nbsp;
+                    </form>
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-info">
