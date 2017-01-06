@@ -15,5 +15,6 @@
   $date=explode(" ",$donnees["0"]["datePhoto"]);
   //formatage de la date en style français
   $laDate=formatDate($date["0"]);
+  $_SESSION['donnees']=$donnees;
 
 ?>
