@@ -2,6 +2,7 @@
 /*
 *contolleur de client
 */
+  define("CHEMINLARGE","images/large/");
   include_once("../web/database/Requetes.class.php");
   include_once("../web/database/baseConf.php");
   include_once("../web/commun/fonctions.php");
@@ -16,5 +17,5 @@
   //formatage de la date en style français
   $laDate=formatDate($date["0"]);
   $_SESSION['donnees']=$donnees;
-
+  miniaturisateur("../web/images/tempo/","../web/images/thumbs/");
 ?>

@@ -84,6 +84,16 @@
                           </div>
                     <?php    }
                     ?>
+                    <?php
+                        if ($_REQUEST["errolog"]=="folie") {?>
+                          <div class="alert alert-block alert-danger fade in">
+                              <button data-dismiss="alert" class="close close-sm" type="button">
+                                  <i class="icon-remove"></i>
+                              </button>
+                               On ne peut pas acceder par URL il faut passer par là!!!
+                          </div>
+                    <?php    }
+                    ?>
                     <form method="POST" action="index.php">
                        <label>Login : </label>
                           <input type="text" name="login" class="form-control" />

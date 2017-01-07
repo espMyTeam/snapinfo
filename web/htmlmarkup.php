@@ -15,6 +15,8 @@
 <script type="text/javascript">
     $(function(){
       var donnees = <?php print_r(json_encode($_SESSION['donnees'])); ?>;
+      var cheminLarge="images/large/";//chemin vers les images larges
+      var cheminMin="images/thumbs/";//chemin vers les miniatures
         $("#elastic_grid_demo").elastic_grid({
             'showAllText' : 'All',
             'items' :
@@ -22,8 +24,8 @@
                 {
                     'title'         : donnees["1"]["lieu"],
                     'description'   : donnees["1"]["commentaire"],
-                    'thumbnail'     : ['images/small/1.jpg', 'images/small/2.jpg'],
-                    'large'         : [donnees["1"]["photo"], 'images/large/2.jpg'],
+                    'thumbnail'     : [cheminMin+donnees["1"]["photo"], 'images/small/2.jpg'],
+                    'large'         : [cheminLarge+donnees["1"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
                         { 'title':'Demo', 'url' : 'http://bonchen.net/' },
@@ -34,8 +36,8 @@
                 {
                     'title'         : donnees["2"]["lieu"],
                     'description'   : donnees["2"]["commentaire"],
-                    'thumbnail'     : ['images/small/4.jpg', 'images/small/5.jpg'],
-                    'large'         : [donnees["2"]["photo"], 'images/large/5.jpg'],
+                    'thumbnail'     : [cheminMin+donnees["2"]["photo"], 'images/small/5.jpg'],
+                    'large'         : [cheminLarge+donnees["2"]["photo"], 'images/large/5.jpg'],
                     'button_list'   :
                     [
                         { 'title':'Demo', 'url' : 'http://bonchen.net/' },
@@ -45,8 +47,8 @@
                 },                {
                     'title'         : donnees["3"]["lieu"],
                     'description'   : donnees["3"]["commentaire"],
-                    'thumbnail'     : ['images/small/15.jpg', 'images/small/2.jpg'],
-                    'large'         : [donnees["3"]["photo"], 'images/large/2.jpg'],
+                    'thumbnail'     : [cheminMin+donnees["3"]["photo"], 'images/small/2.jpg'],
+                    'large'         : [cheminLarge+donnees["3"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
                         { 'title':'Demo', 'url' : 'http://bonchen.net/' },
@@ -56,8 +58,8 @@
                 },                {
                     'title'         : donnees["4"]["lieu"],
                     'description'   : donnees["4"]["commentaire"],
-                    'thumbnail'     : ['images/small/15.jpg', 'images/small/2.jpg'],
-                    'large'         : [donnees["3"]["photo"], 'images/large/2.jpg'],
+                    'thumbnail'     : [cheminMin+donnees["4"]["photo"], 'images/small/2.jpg'],
+                    'large'         : [cheminLarge+donnees["4"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
                         { 'title':'Demo', 'url' : 'http://bonchen.net/' },
