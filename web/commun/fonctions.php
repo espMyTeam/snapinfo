@@ -34,14 +34,15 @@
 		return $ladate[2]."/".$ladate[1]."/".$ladate[0]." ".$donnees[1];
 	}
 	// Générateur de miniatures
-	function make_thumb($src,$dest,$desired_width) {
+	function make_thumb($src,$dest,$desired_height) {
   // Ouverture de l'image
   $source_image = imagecreatefromjpeg($src);
   $width = imagesx($source_image);
   $height = imagesy($source_image);
 
   // Trouver la hauteur désirée pour la miniature, en fonction de sa largeur
-  $desired_height = floor($height*($desired_width/$width));
+  	//$desired_height = floor($height*($desired_width/$width));
+	$desired_width = floor($width*($desired_height/$height));
 
   // Créer une nouvelle image (virtuelle)
   $virtual_image = imagecreatetruecolor($desired_width,$desired_height);
@@ -75,7 +76,7 @@ function get_file_extension($file_name) {
 function miniaturisateur($images_dir,$thumbs_dir){//dossier source et dossier de destination
 
 		// Largeur des miniatures
-		$thumbs_width = 200;
+		$thumbs_width = 100;
 
 		// Récupération de la liste des images
 		$image_files = get_files($images_dir);

@@ -38,16 +38,14 @@
         <br/>
         <!-- row-->
         <div class="row">
-          <div class="col-lg-8 col-md-8">
+          <div class="col-lg-12 col-md-12">
             <div class="panel panel-default">
               <div class="panel-heading">
                   Lieu de prise carte
               </div>
               <div class="panel-body-map">
                 <!--<iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2710.207049454749!2d-1.5729033!3d47.2125309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805ec0fcda6c4cb%3A0xd620ca38dafa1e9a!2s2+Rue+La+Motte+Picquet%2C+44100+Nantes!5e0!3m2!1sfr!2sfr!4v1423244007186" width="600" height="450" frameborder="0"></iframe>-->
-                <!--la carte-- <div id="map" frameborder="0"></div> <!--la carte-->
-                <iframe class="google_map left mapindent" width="290" height="290" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&source=s_q&hl=fr&sll=&sspn=&ie=UTF8&hq=&hnear=97+Avenue+de+la+Corse,+13007+Marseille,+Bouches-du-Rh%C3%B4ne,+Provence-Alpes-C%C3%B4te&output=embed"></iframe>
-                <iframe width=”300″ height=”300″ frameborder=”0″ scrolling=”no” marginheight=”0″ marginwidth=”0″ src=”http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=manchester&sll=53.800651,-4.064941&sspn=21.613333,29.619141&ie=UTF8&t=h&ll=53.492131,-2.228851&spn=0.122552,0.205994&z=11&iwloc=A&output=embed”></iframe>
+                <!--la carte--> <div id="map" frameborder="0"></div> <!--la carte-->
               </div>
             </div>
          </div>
@@ -66,7 +64,7 @@
             <div class="container">
                 <div class="main">
                         <div >
-                            <iframe height="700" scrolling="yes" src="htmlmarkup.php" width="100%"></iframe>
+                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="backgroud-color:rgba(255,255,255,0)" height="700" scrolling="yes" src="htmlmarkup.php" width="100%"></iframe>
                         </div>
                 </div>
             </div>
@@ -79,6 +77,3 @@
 <?php
   include_once("menuBas.php");
 ?>
-<script type="text/javascript" src="leaflet/leaflet-src.js"></script>
-<script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
-<script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->

@@ -22,51 +22,71 @@
             'items' :
             [
                 {
-                    'title'         : donnees["1"]["lieu"],
-                    'description'   : donnees["1"]["commentaire"],
+                    'title'         : 'le titre ici',
+                    'lieu'         : donnees["1"]["lieu"],
+                    'commentaire'   : donnees["1"]["commentaire"],
                     'thumbnail'     : [cheminMin+donnees["1"]["photo"], 'images/small/2.jpg'],
                     'large'         : [cheminLarge+donnees["1"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
-                        { 'title':'Demo', 'url' : 'http://bonchen.net/' },
-                        { 'title':'Download', 'url':'http://porfolio.bonchen.net/'}
+                        { 'date':donnees["1"]["datePhoto"] },
+                        { 'date':'', 'url':''}
                     ],
                     'tags'          : ['']
                 },
                 {
-                    'title'         : donnees["2"]["lieu"],
-                    'description'   : donnees["2"]["commentaire"],
+                    'title'         : 'le titre ici',
+                    'lieu'         : donnees["2"]["lieu"],
+                    'commentaire'   : donnees["2"]["commentaire"],
                     'thumbnail'     : [cheminMin+donnees["2"]["photo"], 'images/small/5.jpg'],
                     'large'         : [cheminLarge+donnees["2"]["photo"], 'images/large/5.jpg'],
                     'button_list'   :
                     [
-                        { 'title':'Demo', 'url' : 'http://bonchen.net/' },
-                        { 'title':'Download', 'url':'http://porfolio.bonchen.net/'}
+                        { 'date':donnees["2"]["datePhoto"]},
+                        { 'date':'', 'url':''}
                     ],
                     'tags'          : ['']
-                },                {
-                    'title'         : donnees["3"]["lieu"],
-                    'description'   : donnees["3"]["commentaire"],
+                },
+                {
+                    'title'         : 'le titre ici',
+                    'lieu'         : donnees["3"]["lieu"],
+                    'commentaire'   : donnees["3"]["commentaire"],
                     'thumbnail'     : [cheminMin+donnees["3"]["photo"], 'images/small/2.jpg'],
                     'large'         : [cheminLarge+donnees["3"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
-                        { 'title':'Demo', 'url' : 'http://bonchen.net/' },
-                        { 'title':'Download', 'url':'http://porfolio.bonchen.net/'}
+                        { 'date':donnees["3"]["datePhoto"] },
+                        { 'date':'', 'url':''}
                     ],
                     'tags'          : ['']
-                },                {
-                    'title'         : donnees["4"]["lieu"],
-                    'description'   : donnees["4"]["commentaire"],
+                },
+                {
+                    'title'         : 'le titre ici',
+                    'lieu'         : donnees["4"]["lieu"],
+                    'commentaire'   : donnees["4"]["commentaire"],
                     'thumbnail'     : [cheminMin+donnees["4"]["photo"], 'images/small/2.jpg'],
                     'large'         : [cheminLarge+donnees["4"]["photo"], 'images/large/2.jpg'],
                     'button_list'   :
                     [
-                        { 'title':'Demo', 'url' : 'http://bonchen.net/' },
-                        { 'title':'Download', 'url':'http://porfolio.bonchen.net/'}
+                        { 'date':donnees["4"]["datePhoto"]},
+                        { 'date':'', 'url':''}
+                    ],
+                    'tags'          : ['']
+                },
+                {
+                    'title'         : 'le titre ici',
+                    'lieu'         : donnees["5"]["lieu"],
+                    'commentaire'   : donnees["5"]["commentaire"],
+                    'thumbnail'     : [cheminMin+donnees["5"]["photo"], 'images/small/2.jpg'],
+                    'large'         : [cheminLarge+donnees["5"]["photo"], 'images/large/2.jpg'],
+                    'button_list'   :
+                    [
+                        { 'date':donnees["5"]["datePhoto"]},
+                        { 'date':'', 'url':''}
                     ],
                     'tags'          : ['']
                 }
+
 
             ]
         });

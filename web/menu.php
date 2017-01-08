@@ -35,6 +35,13 @@ include_once("../server/baseConf.php");
     <link rel="stylesheet" type="text/css" href="assets/slide2/css/demo.css" />
     <link rel="stylesheet" type="text/css" href="assets/slide2/css/elastic_grid.min.css" />
     <!-- /zone slide-->
+    <!-- zoneLeaflet-->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/pulse.css" media="all" />
+    <!-- /zoneLeaflet-->
 
 </head>
 <body>
@@ -52,7 +59,7 @@ include_once("../server/baseConf.php");
     </header>
     <!-- HEADER END-->
     <div class="navbar navbar-inverse set-radius-zero">
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -61,12 +68,12 @@ include_once("../server/baseConf.php");
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    le logo ici
+                    <img src="images/logomin1.png"style="position:absolute;left:10%;"/>
                 </a>
 
             </div>
 
-            <div class="left-div">
+            <div class="left-div" >
                 <div class="user-settings-wrapper">
                     <ul class="nav">
 
