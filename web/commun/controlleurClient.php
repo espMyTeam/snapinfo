@@ -19,3 +19,5 @@
   $_SESSION['donnees']=$donnees;
   miniaturisateur("../web/images/tempo/","../web/images/thumbs/");
 ?>
+
+<script type="text/javascript"> var donnees = <?php print_r(json_encode($_SESSION['donnees'])); ?>; </script>

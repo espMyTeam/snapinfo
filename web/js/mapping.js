@@ -1,3 +1,4 @@
+alert(donnees["0"].longitude+" "+donnees["0"].latitude);
 var UPDATE_TIME = 5;//nombre de secondes pour la mise à jour
 var lat_test = 14.681325;
 var lng_test = -17.467423;
