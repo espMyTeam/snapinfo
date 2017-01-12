@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 29, 2016 at 12:39 PM
--- Server version: 5.7.16-0ubuntu0.16.04.1
+-- Generation Time: Jan 12, 2017 at 12:40 AM
+-- Server version: 5.7.16-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,11 +28,36 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `info` (
   `id` int(11) NOT NULL,
+  `photo` varchar(100) NOT NULL,
   `latidute` double NOT NULL,
   `longitue` double NOT NULL,
   `dateReception` date NOT NULL,
   `utilisateur` int(11) NOT NULL,
   `typeStructure` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `QS`
+--
+
+CREATE TABLE `QS` (
+  `id` int(11) NOT NULL,
+  `quartier` int(11) NOT NULL,
+  `structure` int(11) NOT NULL,
+  `typeStructure` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quartier`
+--
+
+CREATE TABLE `quartier` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -94,6 +119,20 @@ ALTER TABLE `info`
   ADD KEY `typeStructure` (`typeStructure`);
 
 --
+-- Indexes for table `QS`
+--
+ALTER TABLE `QS`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quartier` (`quartier`),
+  ADD KEY `structure` (`structure`);
+
+--
+-- Indexes for table `quartier`
+--
+ALTER TABLE `quartier`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `structure`
 --
 ALTER TABLE `structure`
@@ -122,6 +161,16 @@ ALTER TABLE `utilisateur`
 ALTER TABLE `info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `QS`
+--
+ALTER TABLE `QS`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `quartier`
+--
+ALTER TABLE `quartier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `structure`
 --
 ALTER TABLE `structure`
@@ -146,6 +195,13 @@ ALTER TABLE `utilisateur`
 ALTER TABLE `info`
   ADD CONSTRAINT `info_ibfk_1` FOREIGN KEY (`utilisateur`) REFERENCES `utilisateur` (`id`),
   ADD CONSTRAINT `info_ibfk_2` FOREIGN KEY (`typeStructure`) REFERENCES `typeStructure` (`id`);
+
+--
+-- Constraints for table `QS`
+--
+ALTER TABLE `QS`
+  ADD CONSTRAINT `QS_ibfk_1` FOREIGN KEY (`quartier`) REFERENCES `quartier` (`id`),
+  ADD CONSTRAINT `QS_ibfk_2` FOREIGN KEY (`structure`) REFERENCES `structure` (`id`);
 
 --
 -- Constraints for table `structure`
