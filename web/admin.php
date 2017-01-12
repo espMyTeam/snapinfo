@@ -20,12 +20,12 @@
               <div class="row">
 
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-one" data-toggle="modal" data-target="#myModal">
+                    <div class="dashboard-div-wrapper bk-clr-one" data-toggle="modal" data-target="#ajouter">
                         <i  class="fa fa-plus dashboard-div-icon" ></i>
 
                          <h5>Ajouter une structure </h5>
                     </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal fade" id="ajouter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -70,10 +70,33 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">Modal title Here</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Liste des structures</h4>
                                 </div>
                                 <div class="modal-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                  <div class="table-responsive">
+                                      <table class="table table-striped table-bordered table-hover">
+                                          <thead>
+                                              <tr>
+                                                  <th>#</th>
+                                                  <th>Nom</th>
+                                                  <th>Latitude</th>
+                                                  <th>Longitude</th>
+                                                  <th>Action</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php foreach ($structures as $key => $value) {if($key!=0){?>
+                                              <tr>
+                                                  <td><?php echo $key;?></td>
+                                                  <td><?php echo $value["nomStructure"];?></td>
+                                                  <td><?php echo $value["longitude"];?></td>
+                                                  <td><?php echo $value["latitude"];?></td>
+                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i>';?></td>
+                                              </tr>
+                                            <?php }}?>
+                                          </tbody>
+                                      </table>
+                                  </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -43,6 +43,13 @@ Class Requetes
         $users=$result->fetch();
         return $users;
     }
+    public function getAllStructure($idStructure)
+    {
+        $result=$this->base->prepare("SELECT * FROM `structures`");
+        $result->execute(array());
+        $structure=$result->fetchAll();
+        return $structure;
+    }
     public function getStructurebyid($idStructure)
     {
         $result=$this->base->prepare("SELECT * FROM `structures` where idStructure= :idStructure");
