@@ -1,47 +1,26 @@
 <?php
-	//controleur frontal
-	try {
+	$file_path = "../uploads/";
+    
+    if(isset($_FILES)){
+    	$fileName = basename( $_FILES['uploaded_file']['name']);
+    	$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    	$taille = filesize($_FILES['uploaded_file']['tmp_name']);
+    	
 
-		switch ($_SERVER['REQUEST_METHOD']) {
-			case 'GET':
-				if(isset($_GET['ressource'])) {
-			    	if ($_GET['ressource'] == 'info') { 
-			      		if(isset($_GET['id'])){ //selectionne l'info d'identifiant id
+        $filePath = strtr($fileName, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $filePath = preg_replace('/([^.a-z0-9]+)/i', '-', $filePath);
+        $filePath = "uploads/$filePath";
 
-			      		}
-			      		else{ //tous les infos ajoutées
+	    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $filePath) ){
+	    	
+	        echo "success";
+	    } else{
+	        echo "fail" . $_FILES['uploaded_file']['name'];
+	    }
+    } 
+    else{
+    	echo "mdrrr";
+    }
+    
 
-			      		}
-			    	}
-			    	else if ($_GET['ressource'] == 'structure') {
-			      
-			    	}
-			    	else
-			      		throw new Exception("Action non valide");
-			  	}
-			  	else {
-			    	// action par défaut
-			  	}
-				break;
-
-			case 'POST':
-				
-				break;
-
-			case 'PUT':
-				
-				break;
-
-			case 'DELETE':
-				
-				break; 
-
-			default:
-				
-				break;
-		}
-	}
-	catch (Exception $e) {
-	    erreur($e->getMessage());
-	}
 ?>

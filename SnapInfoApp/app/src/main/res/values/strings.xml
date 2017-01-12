@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SnapInfo app mobile</string>
+    <string name="txt_accueil">Bienvenue dans l\'application SnapInfo!
+        SnapInfo est une plateforme qui vous permet de partager simplement vos évènements par photo, avec des structures telles que la police, les mairies etc..
+    </string>
+
+    <string name="txt_about">
+        SnapInfo est une plateforme innovant dont le but est d\'aider les citoyens
+    </string>
+</resources>

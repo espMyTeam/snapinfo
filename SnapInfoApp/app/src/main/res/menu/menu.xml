@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_accueil" android:title="Accueil" />
+    <item android:id="@+id/menu_capture" android:title="Evenement"/>
+    <item android:id="@+id/menu_position" android:title="Localisation">
+        <menu>
+            <item android:id="@+id/menu_loc_gps" android:title="GPS"/>
+            <item android:id="@+id/menu_loc_gsm" android:title="Reseau téléphonique"/>
+        </menu>
+    </item>
+    <item android:id="@+id/menu_setting" android:title="Paramètres">
+        <menu>
+            <item android:id="@+id/menu_setting_lang" android:title="Langue"/>
+
+        </menu>
+    </item>
+    <item android:id="@+id/menu_about" android:title="A propos"/>
+    <item android:id="@+id/menu_quit" android:title="Quitter"/>
+</menu>
