@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2017 at 12:40 AM
+-- Generation Time: Jan 12, 2017 at 02:58 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1-log
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `info` (
   `id` int(11) NOT NULL,
   `photo` varchar(100) NOT NULL,
-  `latidute` double NOT NULL,
-  `longitue` double NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
   `dateReception` date NOT NULL,
   `utilisateur` int(11) NOT NULL,
   `typeStructure` int(11) NOT NULL
