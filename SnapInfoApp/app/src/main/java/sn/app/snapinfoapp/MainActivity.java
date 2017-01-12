@@ -34,26 +34,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
-
-        switch (item.getItemId()){
-            case R.id.menu_accueil:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.menu_setting:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-            case R.id.menu_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                return true;
-            case R.id.menu_capture:
-                startActivity(new Intent(this, CaptureActivity.class));
-                return true;
-            case R.id.menu_quit:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return new Routing().RoutingMenu(item, this);
     }
 
 }

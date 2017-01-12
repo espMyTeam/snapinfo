@@ -18,12 +18,13 @@
     <!-- reseau mobile -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
     <!-- lecture des informations sur téléphone -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- access internet -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -40,7 +41,8 @@
         </activity>
         <activity android:name=".CaptureActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".LocalisationActivity"></activity>
     </application>
 
 </manifest>

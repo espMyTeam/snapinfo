@@ -1,7 +1,10 @@
 package sn.app.snapinfoapp;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -14,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -24,6 +28,7 @@ public class SendRequest {
     private Context context;
     private String fileAbsolutePath;
     private String destination;
+    private JSONObject datas;
 
    // public SendRequest(CaptureActivity captureActivity, String imageFile, String serveur) {
     //}
@@ -34,10 +39,11 @@ public class SendRequest {
      * @param filePath
      * @param destination
      */
-    public void SendFile(Context context, String filePath, String destination){
+    public void SendFile(Context context, String filePath, JSONObject dataJson, String destination){
         this.context = context;
         this.fileAbsolutePath = filePath;
         this.destination = destination;
+        this.datas = dataJson;
         new SendFileRequest().execute();
     }
 
@@ -54,6 +60,15 @@ public class SendRequest {
 
                 URL url = new URL(destination); // here is your URL path
 
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.MediaColumns.TITLE, "Mon image");
+                values.put(MediaStore.Images.ImageColumns.DESCRIPTION, "Image prise par le téléphone");
+                values.put(MediaStore.Images.Media.DATE_TAKEN, new Date().getTime());
+                //values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, fileName);
+
+                values.put(MediaStore.Images.ImageColumns.LATITUDE, "14.89");
+
+
                 //final String filePath = Environment.getExternalStorageDirectory().toString()+"/DCIM/Camera/Kams.jpg";
                 final String filePath = fileAbsolutePath;
 
@@ -67,6 +82,8 @@ public class SendRequest {
                 int maxBufferSize = 1 * 1024 * 1024;
                 File selectedFile = new File(filePath);
 
+                
+
                 String[] parts = filePath.split("/");
                 final String fileName = parts[parts.length-1];
 
@@ -75,6 +92,7 @@ public class SendRequest {
 
                     return new String("Source File Doesn't Exist... ");
                 }else {
+                   // context.getContentResolver().update(Uri.fromFile(selectedFile), values, null, null);
                     FileInputStream fileInputStream = new FileInputStream(selectedFile);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setReadTimeout(15000 /* milliseconds */);
@@ -109,6 +127,8 @@ public class SendRequest {
 
                     dataOutputStream.writeBytes(lineEnd);
                     dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                    //dataOutputStream.writeBytes(getPostDataString(datas));
 
                     int responseCode=conn.getResponseCode();
 

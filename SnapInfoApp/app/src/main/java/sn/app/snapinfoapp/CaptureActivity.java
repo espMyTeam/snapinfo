@@ -57,13 +57,15 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         btnCapturer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View viewParam) {
                 camera.takePicture(CaptureActivity.this, null,CaptureActivity.this);
+
             }
         });
 
         btnEnvoyer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View viewParam) {
                 if(imageFile != null){
-                    new SendRequest().SendFile(CaptureActivity.this, imageFile, serveur);
+
+                    new SendRequest().SendFile(CaptureActivity.this, imageFile,null, serveur);
                 }
             }
         });
@@ -109,10 +111,10 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         values.put(MediaStore.MediaColumns.TITLE, "Mon image");
         values.put(MediaStore.Images.ImageColumns.DESCRIPTION, "Image prise par le téléphone");
         values.put(MediaStore.Images.Media.DATE_TAKEN, new Date().getTime());
-        values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, fileName);
+        //values.put(MediaStore.Images.ImageColumns.DISPLAY_NAME, fileName);
         values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
         values.put(MediaStore.Images.ImageColumns.LATITUDE, "14.89");
-
+        //getContentResolver().update(uri, values, null, null);
 
 
 
@@ -120,6 +122,7 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
           //      values);
         File temp_file = new File(Environment.getExternalStorageDirectory().toString()+"/DCIM/"+fileName);
         Uri uri = Uri.fromFile(temp_file);
+       // getContentResolver().update(uri, values, null, null);
 
         OutputStream os;
         try {
@@ -164,24 +167,6 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     @Override
     public boolean onOptionsItemSelected (MenuItem item){
 
-        switch (item.getItemId()){
-            case R.id.menu_accueil:
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-            case R.id.menu_setting:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-            case R.id.menu_about:
-                startActivity(new Intent(this, AboutActivity.class));
-                return true;
-            case R.id.menu_capture:
-                startActivity(new Intent(this, CaptureActivity.class));
-                return true;
-            case R.id.menu_quit:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return new Routing().RoutingMenu(item, this);
     }
 }
