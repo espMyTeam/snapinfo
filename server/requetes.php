@@ -127,7 +127,7 @@
 		function selectStruct($nomQuartier, $typeStructure){
 			$req = "SELECT id FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure =quartier.typeStructure QS.typeStructure =:type";
 			$array_params = array(
-				":nom_quartier" => $nom_quartier,
+				":nom_quartier" => $nomQuartier,
 				":type" => $typeStructure
 			);
 			return $this->select($req, $array_params);
