@@ -125,7 +125,7 @@
 
 		/* selectionner la structure à contacter */
 		function selectStruct($nomQuartier, $typeStructure){
-			$req = "SELECT id FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure =quartier.typeStructure QS.typeStructure =:type";
+			$req = "SELECT id FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
 			$array_params = array(
 				":nom_quartier" => $nomQuartier,
 				":type" => $typeStructure
