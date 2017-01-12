@@ -20,4 +20,8 @@
   miniaturisateur("../web/images/tempo/","../web/images/thumbs/");
 ?>
 
-<script type="text/javascript"> var donnees = <?php print_r(json_encode($_SESSION['donnees'])); ?>; </script>
+<script type="text/javascript">
+    var donnees = <?php print_r(json_encode($_SESSION['donnees'])); ?>;
+    var structure = <?php print_r(json_encode($structure)); ?>;
+    //mise des données dans une varieble javascrit afin de mapping
+</script>

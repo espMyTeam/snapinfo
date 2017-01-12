@@ -77,3 +77,9 @@
 <?php
   include_once("menuBas.php");
 ?>
+<!-- MAPPING SCRIPTS  -->
+<script  type="text/javascript" src="jquery/jquery.js"></script>
+<script  type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="leaflet/leaflet-src.js"></script>
+<script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
+<script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->

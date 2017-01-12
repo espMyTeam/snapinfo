@@ -50,10 +50,12 @@ Class Requetes
         $structure=$result->fetch();
         return $structure;
     }
-    public function putStructure($nomStructure)
+    public function putStructure($nomStructure,$latitude,$longitude)
     {
-        $result=$this->base->prepare("INSERT INTO `structures` (`idStructure`, `nomStructure`) VALUES (NULL, :nomStructure);");
-        $result->execute(array("nomStructure"=>$nomStructure));
+        $result=$this->base->prepare("INSERT INTO `structures` (`idStructure`, `nomStructure`, `latitude`, `longitude`) VALUES (NULL, :nomStructure,:latitude,:longitude)");
+        $result->execute(array("nomStructure"=>$nomStructure,
+                               "latitude"=>$latitude,
+                               "longitude"=>$longitude));
     }
     public function putDonnees($donnees)
     {
