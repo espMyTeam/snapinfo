@@ -45,22 +45,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.html" >
 
-                    Le logo ici
+                    <img src="images/logo.png" width="50%"  style="position:absolute;left:30%;top:120%;"/>
                 </a>
 
             </div>
 
-            <div class="left-div">
-                <i class="fa fa-user-plus login-icon" ></i>
-        </div>
             </div>
-        </div>
+        </div><!-- fin nav-bar-->
     <!-- LOGO HEADER END-->
 
     <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin-top:10%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -81,6 +78,16 @@
                                   <i class="icon-remove"></i>
                               </button>
                                Le login ou le mot de passe est incorrect
+                          </div>
+                    <?php    }
+                    ?>
+                    <?php
+                        if ($_REQUEST["errolog"]=="folie") {?>
+                          <div class="alert alert-block alert-danger fade in">
+                              <button data-dismiss="alert" class="close close-sm" type="button">
+                                  <i class="icon-remove"></i>
+                              </button>
+                               On ne peut pas acceder par URL il faut passer par là!!!
                           </div>
                     <?php    }
                     ?>

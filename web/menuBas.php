@@ -17,5 +17,12 @@
 <script src="assets/js/jquery-1.11.1.js"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
 <script src="assets/js/bootstrap.js"></script>
+<!-- MAPPING SCRIPTS  -->
+<script  type="text/javascript" src="jquery/jquery.js"></script>
+<script  type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="leaflet/leaflet-src.js"></script>
+<script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
+<script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->
+
 </body>
 </html>
