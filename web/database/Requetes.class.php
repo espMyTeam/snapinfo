@@ -64,6 +64,14 @@ Class Requetes
                                "latitude"=>$latitude,
                                "longitude"=>$longitude));
     }
+    public function updateStructure($nomStructure,$latitude,$longitude,$id)
+    {   $id+=1;
+        $result=$this->base->prepare("UPDATE `structures` SET `nomStructure`=:nomStructure, `latitude`=:latitude, `longitude`=:longitude WHERE `idStructure` = :id");
+        $result->execute(array("nomStructure"=>$nomStructure,
+                               "latitude"=>$latitude,
+                               "longitude"=>$longitude,
+                               "id"=>$id));
+    }
     public function putDonnees($donnees)
     {
         $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");

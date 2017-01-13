@@ -88,10 +88,10 @@
                                             <?php foreach ($structures as $key => $value) {if($key!=0){?>
                                               <tr>
                                                   <td><?php echo $key;?></td>
-                                                  <td><?php echo $value["nomStructure"];?></td>
-                                                  <td><?php echo $value["longitude"];?></td>
-                                                  <td><?php echo $value["latitude"];?></td>
-                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i>';?></td>
+                                                  <td><?php echo '<input type="text" id="nomStruct'.$key.'" value="'.$value["nomStructure"].'" />'; ?></td>
+                                                  <td><?php echo '<input type="text" id="long'.$key.'" value="'.$value["longitude"].'" size="10" />'; ?></td>
+                                                  <td><?php echo '<input type="text" id="lat'.$key.'" value="'.$value["latitude"].'" size="10" />'; ?></td>
+                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieModifStructure('.$key.');"><i class="fa fa-pencil"></i>';?></td>
                                               </tr>
                                             <?php }}?>
                                           </tbody>
@@ -99,8 +99,7 @@
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +168,30 @@
           <div class="col-lg-8 col-md-8">
             <div class="panel panel-default">
               <div class="panel-heading">
-                  Lieu de prise carte
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <?php foreach ($structures as $key => $value) {if($key!=0){?>
+                            <tr>
+                                <td><?php echo $key;?></td>
+                                <td><?php echo $value["nomStructure"]; ?></td>
+                                <td><?php echo $value["longitude"]; ?></td>
+                                <td><?php echo $value["latitude"]; ?></td>
+                                <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieDeleteStructure('.$key.');"><i class="fa fa-trash"></i>';?></td>
+                            </tr>
+                          <?php }}?>
+                        </tbody>
+                    </table>
+                </div>
               </div>
               <div class="panel-body-map">
                 <img src=""/>
@@ -181,39 +203,6 @@
 
         <!-- /. row -->
 
-
-        <!-- Related Projects Row -->
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">Photos précédentes</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="" alt="">
-                </a>
-            </div>
-
-        </div>
         <!-- /.row -->
 <!-- fin de l'autre row-->
 
