@@ -1,16 +1,19 @@
-alert(donnees["0"].longitude+" "+donnees["0"].latitude);
+//alert(donnees["0"].longitude+" "+donnees["0"].latitude);
+//alert(structure.latitude+" "+structure.longitude);
 var UPDATE_TIME = 5;//nombre de secondes pour la mise à jour
 var lat_test = 14.681325;
 var lng_test = -17.467423;
-
+var longCentre=0,latCentre=0;
+/*var centre =*/ centreCarte(donnees["0"].longitude,structure.longitude,donnees["0"].latitude,structure.latitude);
+console.log(donnees["0"].longitude+"|"+structure.longitude+"|"+donnees["0"].latitude+"|"+structure.latitude+"le centre");
 window.onload = function(){
-	var val_zoom = 15;
+	var val_zoom = 14;
 	var bus_marker_retour, bus_marker_allee,bus_marker_retour_ic, bus_marker_allee_ic, all_bus_marker_allee, all_bus_marker_retour;
 	var busIcon_allee = L.icon.pulse({iconSize:[20,20],color:'blue'});
 	var busIcon_retour = L.icon.pulse({iconSize:[20,20],color:'red'});
 //on centre la carte à cette position
 	var map = L.map('map',{
-		center: [14.681293, -17.467403],
+		center: [donnees["0"].latitude, donnees["0"].longitude],
     	zoom: val_zoom
 	});
 
@@ -24,7 +27,7 @@ window.onload = function(){
 	};
 
 	//ajouter le marqueur ESP
-	ajout_marker(14.681335,-17.466754, "Ecole Supérieure Polytechnique");
+	ajout_marker(donnees["0"].latitude,donnees["0"].longitude, "Ecole Supérieure Polytechnique");
 	//geolocalise();
 
 	var realtime = L.realtime(
@@ -51,7 +54,7 @@ window.onload = function(){
 				all_bus_marker_retour = [];
 				all_bus_marker_allee = [];
 
-				console.log(data);
+				//console.log(data);
 				//pour commencer on retire les bus déjà sur place (nettoyage de la carte)
 				if(bus_marker_retour){
 
@@ -138,6 +141,17 @@ function alertApprocheBus(bus,marker_bus)//reçoit la reference de bus (aller|re
 			marker_bus.bindPopup('Le bus est arrivé')
 			.openPopup();
 			}
+}
+
+/*
+fonction de conversion des coordonnées sexadécimales en coordonnees décimales
+*/
+function centreCarte(long1,long2,lat1,lat2)//reçoit la reference de bus (aller|retour),le marqueur représentant le bus sur la carte
+{
+		longCentre=(long1,long2+long1,long2)/2;
+		latCentre=(lat1,lat2+lat1,lat2)/2;
+		//return longitude+","+latitude;
+
 }
 /*
 	geolocaliser le visteur
