@@ -12,8 +12,9 @@
   //recuperation de la liste de toutes les structuresgetAllStructure($idStructure)
   $structures = $requete->getAllStructure();
   define("NOMSTRUCTURE",$structure["nomStructure"]);
-  if($_REQUEST["action"]=="ajouter")
-  {
+  if($_REQUEST["action"]=="ajouter"){
     $requete->putStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
+  }else if($_REQUEST["action"]=="modifier"){
+    $requete->updateStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["idStruct"]);
   }
 ?>
