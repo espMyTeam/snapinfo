@@ -91,7 +91,7 @@
                                                   <td><?php echo '<input type="text" id="nomStruct'.$key.'" value="'.$value["nomStructure"].'" />'; ?></td>
                                                   <td><?php echo '<input type="text" id="long'.$key.'" value="'.$value["longitude"].'" size="10" />'; ?></td>
                                                   <td><?php echo '<input type="text" id="lat'.$key.'" value="'.$value["latitude"].'" size="10" />'; ?></td>
-                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieModifStructure('.$key.');"><i class="fa fa-pencil"></i>';?></td>
+                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieModifStructure('.$key.','.$value["idStructure"].');"><i class="fa fa-pencil"></i>';?></td>
                                               </tr>
                                             <?php }}?>
                                           </tbody>
