@@ -65,12 +65,17 @@ Class Requetes
                                "longitude"=>$longitude));
     }
     public function updateStructure($nomStructure,$latitude,$longitude,$id)
-    {   $id+=1;
+    {   
         $result=$this->base->prepare("UPDATE `structures` SET `nomStructure`=:nomStructure, `latitude`=:latitude, `longitude`=:longitude WHERE `idStructure` = :id");
         $result->execute(array("nomStructure"=>$nomStructure,
                                "latitude"=>$latitude,
                                "longitude"=>$longitude,
                                "id"=>$id));
+    }
+    public function deleteStructure($id)
+    {
+        $result=$this->base->prepare("DELETE FROM `structures` WHERE `structures`.`idStructure` = :id");
+        $result->execute(array("id"=>$id));
     }
     public function putDonnees($donnees)
     {

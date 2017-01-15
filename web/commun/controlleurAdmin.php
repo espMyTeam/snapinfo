@@ -14,7 +14,11 @@
   define("NOMSTRUCTURE",$structure["nomStructure"]);
   if($_REQUEST["action"]=="ajouter"){
     $requete->putStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
-  }else if($_REQUEST["action"]=="modifier"){
+  }
+  else if($_REQUEST["action"]=="modifier"){
     $requete->updateStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["idStruct"]);
+  }
+  else if($_REQUEST["action"]=="supprimer"){
+    $requete->deleteStructure($_REQUEST["idStruct"]);
   }
 ?>
