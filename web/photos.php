@@ -15,7 +15,7 @@
   <div class="row">
     <div class="carouselGallery-col-60">
       <?php foreach($toutesDonnees as $key => $value) {?>
-        <?php $infos="photo prise à ".$value["lieu"]." le ".$value['datePhoto']."<br/>".$value['commentaire'] ?>
+        <?php $infos="photo prise à ".$value["lieu"]." le ".$value['datePhoto']."<br/>".$value['commentaire']; ?>
         <div class="carouselGallery-col-1 carouselGallery-carousel" data-index="<?php echo $value['idDonnees']; ?>" data-username="SNAPinfo" data-imagetext="<?php echo $infos; ?>" data-location="" data-likes="" <?php echo'data-imagepath="'.CHEMINLARGE.$value["photo"].'"';?> data-posturl="https://instagram.com/p/9_dViYwVWJ/" style="background-image:url(<?php echo CHEMINLARGE.$value["photo"];?>);">
           <div class="carouselGallery-item">
               <div class="carouselGallery-item-meta">
@@ -28,16 +28,12 @@
       <?php }?>
     </div>
     <div class="carouselGallery-col-40">
-    <div class="carouselGallery-col-2 carouselGallery-carousel" data-index="6" data-username="visitsweden" data-imagetext="Photographer: @alexeliassonphoto
-    Location: Gamla stan
-
-    If you ever visit Stockholm, you have to take a stroll in Gamla stan (Old town). It's like traveling back in time.
-
-    Tag your photos with #visitsweden and #swedishmoments to get featured. //@deskriptiv" data-location="" data-likes="4151" <?php echo'data-imagepath="'.CHEMINLARGE.$donnees["0"]["photo"].'"';?> data-posturl="https://instagram.com/p/9slFueQVQz/" style="background-image:url(<?php echo CHEMINPETIT.$donnees["0"]["photo"];?>);">
+      <?php $infos2="photo prise à ".$donnees["0"]["lieu"]." le ".$laDate." à ".$date["1"]."<br/>".$donnees["0"]["distance"]; ?>
+    <div class="carouselGallery-col-2 carouselGallery-carousel" data-index="6" data-username="SNAPinfo" data-imagetext="<?php echo $infos2; ?>" data-location="" data-likes="" <?php echo'data-imagepath="'.CHEMINLARGE.$donnees["0"]["photo"].'"';?> data-posturl="https://instagram.com/p/9slFueQVQz/" style="background-image:url(<?php echo CHEMINPETIT.$donnees["0"]["photo"];?>);">
     <div class="carouselGallery-item">
         <div class="carouselGallery-item-meta">
             <span class="carouselGallery-item-meta-user">
-                @visitsweden
+                Ici le titre
             </span>
         </div>
     </div>
