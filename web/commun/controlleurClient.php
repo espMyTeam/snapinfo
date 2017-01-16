@@ -3,12 +3,15 @@
 *contolleur de client
 */
   define("CHEMINLARGE","images/large/");
+  define("CHEMINPETIT","images/thumbs/");
   include_once("../web/database/Requetes.class.php");
   include_once("../web/database/baseConf.php");
   include_once("../web/commun/fonctions.php");
   $requete = new Requetes(HOSTNAME, BASENAME, USERNAME, PASSWORD);
   //recuperation des 5 dernières données
   $donnees = $requete->getXDerniereDonnees($_SESSION["user"]["idStructure"],6);
+  //recuperation de toutes les données
+  $toutesDonnees = $requete->getAllDonnees();
   //recuperation de la structure en fonction de l'indentifiant
   $structure = $requete->getStructurebyid($_SESSION["user"]["idStructure"]);
   define("NOMSTRUCTURE",$structure["nomStructure"]);

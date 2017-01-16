@@ -43,6 +43,9 @@ include_once("../server/baseConf.php");
 		<link rel="stylesheet" type="text/css" href="css/pulse.css" media="all" />
     <!-- /zoneLeaflet-->
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+   <link href="css/main.css" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -115,12 +118,7 @@ include_once("../server/baseConf.php");
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-cliquer" href="accueil.php">Accueil</a></li>
-                            <li><a class="menu-cliquer" href="page.php">Page</a></li>
-                            <li><a class="menu-cliquer" href="page.html">Page</a></li>
-                            <li><a class="menu-cliquer" href="page.html">Page</a></li>
-                             <li><a class="menu-cliquer" href="page.html">Page</a></li>
-                            <li><a class="menu-cliquer" href="page.html">Page</a></li>
-
+                            <li><a class="menu-cliquer" href="photos.php">Voir les photos</a></li>
                         </ul>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ Class Requetes
         $users=$result->fetch();
         return $users;
     }
-    public function getAllStructure($idStructure)
+    public function getAllStructure()
     {
         $result=$this->base->prepare("SELECT * FROM `structures`");
         $result->execute(array());
@@ -65,7 +65,7 @@ Class Requetes
                                "longitude"=>$longitude));
     }
     public function updateStructure($nomStructure,$latitude,$longitude,$id)
-    {   
+    {
         $result=$this->base->prepare("UPDATE `structures` SET `nomStructure`=:nomStructure, `latitude`=:latitude, `longitude`=:longitude WHERE `idStructure` = :id");
         $result->execute(array("nomStructure"=>$nomStructure,
                                "latitude"=>$latitude,
@@ -97,6 +97,14 @@ Class Requetes
     {
       $result=$this->base->prepare("SELECT * FROM `donnees` where idStructure = :idStructure order by idDonnees desc limit ".$limite."");
       $result->execute(array("idStructure"=>$idStructure));
+      $donees=$result->fetchAll();
+      return $donees;
+    }
+
+    public function getAllDonnees()
+    {
+      $result=$this->base->prepare("SELECT * FROM `donnees`");
+      $result->execute(array());
       $donees=$result->fetchAll();
       return $donees;
     }
