@@ -18,7 +18,6 @@
     <!-- reseau mobile -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <!-- lecture des informations sur téléphone -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
@@ -39,10 +38,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CaptureActivity" />
+        <activity
+            android:name=".CaptureActivity"
+            android:screenOrientation="fullUser" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".LocalisationActivity"></activity>
+        <activity android:name=".LocalisationActivity" />
+
+        <service
+            android:name=".GeolocalisationService"
+            android:enabled="false"
+            android:exported="true"></service>
+
+        <activity android:name=".SendingActivity"></activity>
     </application>
 
 </manifest>

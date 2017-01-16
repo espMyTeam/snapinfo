@@ -126,9 +126,29 @@ public class SendRequest {
                     }
 
                     dataOutputStream.writeBytes(lineEnd);
-                    dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
-                    //dataOutputStream.writeBytes(getPostDataString(datas));
+
+                    if(datas != null){
+
+                        //Toast.makeText(context, getPostDataString(datas), Toast.LENGTH_LONG).show();
+                        String[] posts = getPostDataString(datas).split("&");
+                        int max = posts.length;
+                        for(int i=0; i<max;i++) {
+                            dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
+                            String[] kv = posts[i].split("=");
+                            dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + kv[0] + "\"" + lineEnd);
+                            dataOutputStream.writeBytes("Content-Type: text/plain"+lineEnd);
+                            dataOutputStream.writeBytes(lineEnd);
+
+                            if(kv.length>=2)
+                                dataOutputStream.writeBytes(kv[1]);
+                            dataOutputStream.writeBytes(lineEnd);
+                        }
+
+
+                    }
+
+                    dataOutputStream.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
                     int responseCode=conn.getResponseCode();
 

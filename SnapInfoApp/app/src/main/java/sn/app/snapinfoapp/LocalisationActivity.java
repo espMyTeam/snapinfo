@@ -2,6 +2,7 @@ package sn.app.snapinfoapp;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -16,6 +17,8 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,49 +29,41 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
 
+
+
 public class LocalisationActivity extends AppCompatActivity {
+
+    private double latitude;
+    private double longitude;
+    private String typeStructure;
+    private String telephone = "";
+    private String CellID = "";
+    private String MNC = "";
+    private String MCC = "";
+    private String LAC = "";
+    private String operateur = "";
+    private String IMEI = "";
+
+    private TelephonyManager telephonyManager;
+
+    private Button btnRefresh;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_localisation);
 
+        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-
-    }
-
-
-
-    public void getPositionGPS() {
-        //selectionner tous les fournisseurs
-
-        List<String> fournisseurs = locationManager.getAllProviders();
-
-        //definir des criteres
-        Criteria criteres = new Criteria();
-        // Localisation la plus précise possible
-        criteres.setAccuracy(Criteria.ACCURACY_FINE);
-        // Altitude fournies obligatoirement
-        criteres.setAltitudeRequired(true);
-
-        //selectionne le meilleur fournisseur
-        String fournisseurSelectionne = locationManager.getBestProvider(criteres, true);
-
-        // LocationProvider gpsProvider = locationManager.getProvider(fournisseurSelectionne);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            Location location = locationManager.getLastKnownLocation(fournisseurSelectionne);
-
-
-        }
-
+        btnRefresh = (Button) findViewById(R.id.btnRefresh);
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startService(new Intent(LocalisationActivity.this, GeolocalisationService.class));
+            }
+        });
 
     }
+
 
     /**
      * deserialiser le menu
@@ -92,5 +87,40 @@ public class LocalisationActivity extends AppCompatActivity {
         return new Routing().RoutingMenu(item, this);
     }
 
+    public void updateLocalisation(){
+        this.MCC = telephonyManager.getSimCountryIso();
+        this.MNC = telephonyManager.getNetworkOperator()+ "--"+telephonyManager.getCellLocation().toString();
+        this.operateur = telephonyManager.getNetworkOperatorName()+"-"+telephonyManager.getSimOperator();
+        this.IMEI = telephonyManager.getDeviceId();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.telephone = ".."+telephonyManager.getPhoneCount() ;//.getPhoneCount();
+        }else{
+            this.telephone = telephonyManager.getSubscriberId();
+        }
+
+
+
+         /*
+        TextView valLng= (TextView) findViewById(R.id.valLng);
+        valLng.setText(String.valueOf(this.longitude));*/
+
+    }
+
+
+
+
+    public JSONObject formule() throws JSONException {
+        JSONObject postDataParams = new JSONObject();
+        postDataParams.put("latitude", this.latitude);
+        postDataParams.put("longitude", this.longitude);
+        postDataParams.put("typeStructure", this.typeStructure);
+        postDataParams.put("MNC", this.MNC);
+        postDataParams.put("LAC", this.LAC);
+        postDataParams.put("MCC", this.MCC);
+        postDataParams.put("CellID", this.CellID);
+        postDataParams.put("telephone", this.telephone);
+        postDataParams.put("operateur", this.operateur);
+        return postDataParams;
+    }
 
 }

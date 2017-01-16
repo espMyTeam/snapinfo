@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -32,11 +33,11 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
     private SurfaceHolder surfaceHolder;
     private Camera camera;
 
-    private Button btnCapturer = null;
-    private Button btnEnvoyer = null;
+    private Button btnCapturer = null, btnOK;
+
     private String imageFile = null;
 
-    private String serveur = "http://192.168.1.103/android/SimpleHTTPTeste/teste.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,8 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
 
 
         btnCapturer = (Button) findViewById(R.id.btnCapturer);
-        btnEnvoyer = (Button) findViewById(R.id.btnEnvoyer);
+        btnOK = (Button) findViewById(R.id.btnOK);
+
 
         //demarrer ma camera
         surfaceView = (SurfaceView)findViewById(R.id.surface_view);
@@ -53,22 +55,31 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
+        //Toast.makeText(CaptureActivity.this, "orientation "+ (new Camera.CameraInfo()).orientation, Toast.LENGTH_LONG).show();
+
+
         //capture d'une photo
         btnCapturer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View viewParam) {
                 camera.takePicture(CaptureActivity.this, null,CaptureActivity.this);
 
+
             }
         });
 
-        btnEnvoyer.setOnClickListener(new View.OnClickListener() {
+        btnOK.setOnClickListener(new View.OnClickListener() {
             public void onClick(View viewParam) {
-                if(imageFile != null){
-
-                    new SendRequest().SendFile(CaptureActivity.this, imageFile,null, serveur);
+                if(imageFile != null) {
+                    //Toast.makeText(CaptureActivity.this, "looool ", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent();
+                    intent.setClass(CaptureActivity.this, SendingActivity.class);
+                    intent.putExtra("imageFile", imageFile);
+                    startActivity(intent);
                 }
+
             }
         });
+
 
     }
 
@@ -80,6 +91,8 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
             p.setPreviewSize(width, height);
             this.camera.setParameters(p);
 
+            //Toast.makeText(CaptureActivity.this, "orientation "+ (new Camera.CameraInfo()).orientation, Toast.LENGTH_LONG).show();
+
             try {
                 this.camera.setPreviewDisplay(holder);
                 this.camera.startPreview();
@@ -90,8 +103,23 @@ public class CaptureActivity extends AppCompatActivity implements SurfaceHolder.
         }
     }
 
+
+
     public void surfaceCreated(SurfaceHolder holder) {
         camera = Camera.open();
+
+        //modifier l'orientation de la camera
+        this.camera.setDisplayOrientation(90);
+
+        //modifier l'orientation du capteur
+        Camera.Parameters p = this.camera.getParameters();
+        android.hardware.Camera.CameraInfo info =
+                new android.hardware.Camera.CameraInfo();
+
+        p.setRotation((new Camera.CameraInfo()).orientation + 90);
+        this.camera.setParameters(p);
+
+
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {

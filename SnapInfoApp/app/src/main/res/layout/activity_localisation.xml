@@ -7,6 +7,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRefresh"
+            android:text="Localiser"/>
+
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +48,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtLat"
+            android:id="@+id/txtLng"
             android:text="Longitude: "/>
 
         <TextView
