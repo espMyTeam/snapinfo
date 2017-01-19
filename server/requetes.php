@@ -76,15 +76,17 @@
 			fonctions associées à la base de données
 		*/
 		/* ajouter les infos reçus*/
-		function addInfosRecus($photo, $latitude, $longitude, $altitude,  $lheure, $ladate){
-			$req = "INSERT INTO info(id,photo,latitude,longitude,altitude,ladate,heure) VALUES(:photo, :latitude, :longitude, :altitude, :lheure, :ladate);";
+		function addInfosRecus($photo, $latitude, $longitude, $commentaire, $ladate, $utilisateur, $typeStructure){
+			$req = "INSERT INTO info(photo,latitude,longitude,commentaire,ladate,utilisateur,typeStructure) VALUES(:photo, :latitude, :longitude, :altitude, :lheure, :ladate, :utilisateur, :typeStructure);";
 			$array_params = array(
 				":photo" => $photo,
 				":latitude" => $latitude,
 				":longitude" => $longitude,
 				":altitude" => $altitude,
 				":lheure" => $lheure,
-				":ladate" => $ladate
+				":ladate" => $ladate,
+				":utilisateur" => $utilisateur,
+				":typeStructure" => $typeStructure
 			);
 			return $this->insert($req, $array_params);
 		}
@@ -122,7 +124,7 @@
 
 		/* selectionner la structure à contacter */
 		function selectStruct($nomQuartier, $typeStructure){
-			$req = "SELECT id FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
+			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
 			$array_params = array(
 				":nom_quartier" => $nomQuartier,
 				":type" => $typeStructure
@@ -130,6 +132,15 @@
 			return $this->select($req, $array_params);
 		}
 
+		/*selectionner l'identifiant de l'utilisateur*/
+		function selectUser($telephone){
+			$req = "SELECT id FROM utilisateur where telephone =:telephone;";
+			$array_params = array(
+				"telephone" => $telephone	
+			);
+			return $this->select($req, $array_params);
+		}
+		
 	}
 
 ?>

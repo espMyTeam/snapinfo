@@ -65,18 +65,33 @@
 	$id_user = $base->selectUser($telephone);
 	if($id_user == 0){
 		$id_user = $base->addParamUser($telephone, $cellID, $MNC, $MCC, $LAC, $operateur);
-		$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $commentaire, $ladate, $id_user , $id_struct);
+		$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $altitude,  $lheure, $ladate, $id_user , $id_struct);
 	}
 	else{
 		$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $altitude,  $lheure, $ladate, $id_user , $id_struct);
 	}
-
+?>
+	/*Envoi des données à la structure concernée*/
+		<form id="my_form" method="post" action="philippe.php" enctype="multipart/form-data">
+			<input type="file" name="photo" accept="<?php $filePath ?>">    			
+			<input type="text" name="latitude" value ="<?php $latitude ?>">
+			<input type="text" name="longitude" value ="<?php $longitude ?>">
+			<input type="text" name="commentaire" value ="<?php $commentaire ?>">
+		</form>
+<?php
 	<script type=text/javascript>
+		$(function () {
+       		 var $form = $('#my_form');
+       		 var formdata = (window.FormData) ? new FormData($form[0]) : null;
+       		 var data = (formdata !== null) ? formdata : $form.serialize();
 	    		$.ajax({
-	    		   url : philippe.php,
-	    		   type : POST,
-			   data : 'photo=' + filePath + '&latitude=' + latitude + '&longitude=' + longitude + '&commentaire=' + commentaire + '&libelle', 
-	    		   success : function(reponse){ 
+	    		   url : $form.attr('action'),
+	    		   type : $form.attr('method'),
+			   contentType: false, // obligatoire pour de l'upload
+            		   processData: false, // obligatoire pour de l'upload
+	    		   dataType : 'html',
+			   data : data, // On fait passer nos variables
+	    		   success : function(reponse){ // success est toujours en place, bien sûr !
            
 	    		   },
 
@@ -85,6 +100,7 @@
 	    		   }
 
 	    		});
+		});
 	</script>
     } 
     else{
