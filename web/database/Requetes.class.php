@@ -79,19 +79,19 @@ Class Requetes
     }
     public function putDonnees($donnees)
     {
-        $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $result=$this->base->prepare("INSERT INTO `donnees`(`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $result->execute($donnees);
     }
-    /*public function putDonnees($nomStructure)
+    /*public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
     {
         $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (NULL, :idStructure, :photo, :longitude , :latitude, :lieu, :datePhoto, :commentaire)");
-        $result->execute(array("idStructure"=>$nomStructure,
-                               "photo"=>$nomStructure,
-                               "longitude"=>$nomStructure,
-                               "latitude"=>$nomStructure,
-                               "lieu"=>$nomStructure,
-                               "datePhoto"=>$nomStructure,
-                               "commentaire"=>$nomStructure));
+        $result->execute(array("idStructure"=>$idStructure,
+                               "photo"=>$photo,
+                               "longitude"=>$longitude,
+                               "latitude"=>$latitude,
+                               "lieu"=>$lieu,
+                               "datePhoto"=>$datePhoto,
+                               "commentaire"=>$commentaire));
     }*/
     public function getXDerniereDonnees($idStructure,$limite)
     {
