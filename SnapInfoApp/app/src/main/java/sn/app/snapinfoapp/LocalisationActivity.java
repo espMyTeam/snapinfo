@@ -1,19 +1,12 @@
 package sn.app.snapinfoapp;
 
-import android.Manifest;
+
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.os.Build;
-import android.support.v4.app.ActivityCompat;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,40 +18,31 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.List;
-
-
 
 public class LocalisationActivity extends AppCompatActivity {
 
-    private double latitude;
-    private double longitude;
-    private String typeStructure;
-    private String telephone = "";
-    private String CellID = "";
-    private String MNC = "";
-    private String MCC = "";
-    private String LAC = "";
-    private String operateur = "";
-    private String IMEI = "";
-
-    private TelephonyManager telephonyManager;
 
     private Button btnRefresh;
+
+    private Recepteur recepteur;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_localisation);
 
-        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+
+        recepteur = new Recepteur();
+        IntentFilter filter = new IntentFilter("track");
+        registerReceiver(recepteur, filter);
 
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startService(new Intent(LocalisationActivity.this, GeolocalisationService.class));
+                Intent service = new Intent(LocalisationActivity.this, TrackerService.class);
+                //service.putExtra("duree", 1000);
+                startService(service);
             }
         });
 
@@ -87,40 +71,31 @@ public class LocalisationActivity extends AppCompatActivity {
         return new Routing().RoutingMenu(item, this);
     }
 
-    public void updateLocalisation(){
-        this.MCC = telephonyManager.getSimCountryIso();
-        this.MNC = telephonyManager.getNetworkOperator()+ "--"+telephonyManager.getCellLocation().toString();
-        this.operateur = telephonyManager.getNetworkOperatorName()+"-"+telephonyManager.getSimOperator();
-        this.IMEI = telephonyManager.getDeviceId();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            this.telephone = ".."+telephonyManager.getPhoneCount() ;//.getPhoneCount();
-        }else{
-            this.telephone = telephonyManager.getSubscriberId();
+
+    class Recepteur extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //Toast.makeText(context, "Intent.", Toast.LENGTH_LONG).show();
+            if(intent.getExtras() != null) {
+
+                //try {
+                   // JSONObject recu = (JSONObject) intent.getExtras().getSerializable("location");
+                    //Toast.makeText(context, "Intent Detected." +intent.getExtras().getString("altitude"), Toast.LENGTH_LONG).show();
+               // } catch (JSONException e) {
+
+                //}
+                ((TextView) findViewById(R.id.valLat)).setText(intent.getExtras().getString("altitude"));
+                ((TextView) findViewById(R.id.valLng)).setText(intent.getExtras().getString("longitude"));
+
+                ((TextView) findViewById(R.id.valMCC)).setText(intent.getExtras().getString("MCC"));
+                ((TextView) findViewById(R.id.valMNC)).setText(intent.getExtras().getString("MNC"));
+                ((TextView) findViewById(R.id.valOperateur)).setText(intent.getExtras().getString("operateur"));
+                ((TextView) findViewById(R.id.valCellID)).setText(intent.getExtras().getString("CellID"));
+                ((TextView) findViewById(R.id.valTel)).setText(intent.getExtras().getString("telephone"));
+                ((TextView) findViewById(R.id.valLAC)).setText(intent.getExtras().getString("LAC"));
+            }
+
         }
-
-
-
-         /*
-        TextView valLng= (TextView) findViewById(R.id.valLng);
-        valLng.setText(String.valueOf(this.longitude));*/
-
-    }
-
-
-
-
-    public JSONObject formule() throws JSONException {
-        JSONObject postDataParams = new JSONObject();
-        postDataParams.put("latitude", this.latitude);
-        postDataParams.put("longitude", this.longitude);
-        postDataParams.put("typeStructure", this.typeStructure);
-        postDataParams.put("MNC", this.MNC);
-        postDataParams.put("LAC", this.LAC);
-        postDataParams.put("MCC", this.MCC);
-        postDataParams.put("CellID", this.CellID);
-        postDataParams.put("telephone", this.telephone);
-        postDataParams.put("operateur", this.operateur);
-        return postDataParams;
     }
 
 }

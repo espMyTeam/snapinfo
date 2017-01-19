@@ -17,18 +17,23 @@ public class Routing {
         switch (item.getItemId()){
             case R.id.menu_accueil:
                 activite.startActivity(new Intent(activite, MainActivity.class));
+                activite.finish();
                 return true;
             case R.id.menu_setting:
                 activite.startActivity(new Intent(activite, SettingsActivity.class));
+                //activite.finish();
                 return true;
             case R.id.menu_about:
                 activite.startActivity(new Intent(activite, AboutActivity.class));
+                //activite.finish();
                 return true;
             case R.id.menu_capture:
                 activite.startActivity(new Intent(activite, CaptureActivity.class));
+                //activite.finish();
                 return true;
             case R.id.menu_position:
                 activite.startActivity(new Intent(activite, LocalisationActivity.class));
+                //activite.finish();
                 return true;
             case R.id.menu_quit:
                 activite.finish();
