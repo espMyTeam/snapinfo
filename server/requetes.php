@@ -19,7 +19,7 @@
 		}
 
 		/*
-			connexion à la base 
+			connexion à la base
 		*/
 		private function connect(){
 
@@ -34,7 +34,7 @@
 
 				}catch(Exception $e){
 					$this->running = False;
-				} 
+				}
 		}
 
 		function deconnect(){
@@ -44,9 +44,9 @@
 			}catch(Exception $e){
 
 			}
-			
+
 		}
-		
+
 		/* requete de selection */
 		private function select($req, $array_params, $methode=PDO::FETCH_NUM){
 			$req = $this->base->prepare($req);
@@ -71,20 +71,22 @@
 			$req->execute($array_params);
 		}
 
-		
+
 		/*
 			fonctions associées à la base de données
 		*/
 		/* ajouter les infos reçus*/
-		function addInfosRecus($photo, $latitude, $longitude, $altitude,  $lheure, $ladate){
-			$req = "INSERT INTO info(id,photo,latitude,longitude,altitude,ladate,heure) VALUES(:photo, :latitude, :longitude, :altitude, :lheure, :ladate);";
+		function addInfosRecus($photo, $latitude, $longitude, $commentaire, $ladate, $utilisateur, $typeStructure){
+			$req = "INSERT INTO info(photo,latitude,longitude,commentaire,ladate,utilisateur,typeStructure) VALUES(:photo, :latitude, :longitude, :altitude, :lheure, :ladate, :utilisateur, :typeStructure);";
 			$array_params = array(
 				":photo" => $photo,
 				":latitude" => $latitude,
 				":longitude" => $longitude,
 				":altitude" => $altitude,
 				":lheure" => $lheure,
-				":ladate" => $ladate
+				":ladate" => $ladate,
+				":utilisateur" => $utilisateur,
+				":typeStructure" => $typeStructure
 			);
 			return $this->insert($req, $array_params);
 		}
@@ -100,12 +102,12 @@
 				":LAC" => $LAC,
 				":operateur" => $operateur
 			);
-			return $this->insert($req, $array_params); 
+			return $this->insert($req, $array_params);
 		}
-		
+
 		/*ajouter une structure*/
 		function addStructure($typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
-			$req = "INSERT INTO structure(id,typeStruture,libelle,adresse,contact1,contact2,mail,latitude,longitude,zone) VALUES(:typeStruture, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude, :zone);";
+			$req = "INSERT INTO structure(id,typeStruture,libelle,adresse,contact1,contact2,mail,latitude,longitude,zone) VALUES(NULL,:typeStruture, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude, :zone);";
 			$array_params = array(
 				":typeStructure" => $typeStructure,
 				":libelle" => $libelle,
@@ -115,14 +117,14 @@
 				":mail" => $mail,
 				":latitude" => $latitude,
 				":longitude" => $longitude,
-				":zone" => $zone 
+				":zone" => $zone
 			);
 			return $this->insert($req, $array_params);
 		}
 
 		/* selectionner la structure à contacter */
 		function selectStruct($nomQuartier, $typeStructure){
-			$req = "SELECT id FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
+			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
 			$array_params = array(
 				":nom_quartier" => $nomQuartier,
 				":type" => $typeStructure
@@ -130,6 +132,34 @@
 			return $this->select($req, $array_params);
 		}
 
+<<<<<<< HEAD
+		/*ajouter un nouveau type de structure*/
+		function addTypeStructure($typeStruture){
+			$result=$this->base->prepare("INSERT INTO `typeStructure` (`id`, `nomStructure`) VALUES (NULL, :typeStructure)");
+        	$result->execute(array("typeStructure" => $typeStruture));
+        	$result->closeCursor() ;
+        }
+
+        /*recuperer les types de structures*/
+		function recupTypeStructure(){
+			$result=$this->base->prepare("SELECT * FROM `typeStructure`");
+        	$result->execute(array());
+        	$types=$result->fetchAll();
+		    $result->closeCursor();
+		    return $types;
+        }
+
+=======
+		/*selectionner l'identifiant de l'utilisateur*/
+		function selectUser($telephone){
+			$req = "SELECT id FROM utilisateur where telephone =:telephone;";
+			$array_params = array(
+				"telephone" => $telephone
+			);
+			return $this->select($req, $array_params);
+		}
+
+>>>>>>> origin/master
 	}
 
 ?>

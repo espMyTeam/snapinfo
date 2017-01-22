@@ -1,7 +1,10 @@
 package sn.app.snapinfoapp;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,24 +30,22 @@ import org.json.JSONObject;
 
 import java.io.File;
 
-public class SendingActivity extends AppCompatActivity implements LocationListener {
+public class SendingActivity extends AppCompatActivity{
 
-    //parametres a envoyer
-    private double latitude;
-    private double longitude;
-    private String typeStructure;
+    private String latitude;
+    private String longitude;
+    private String altitude;
     private String telephone = "";
     private String CellID = "";
     private String MNC = "";
     private String MCC = "";
     private String LAC = "";
-    private String operateur = "operateur";
+    private String operateur = "";
     private String IMEI = "";
+
+    private String typeStructure = "";
     private String commentaire = "";
 
-
-    private LocationManager locationManager;
-    private TelephonyManager telephonyManager;
 
     private Button btnEnvoyer = null;
     private ImageView lastImg;
@@ -53,7 +55,7 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
 
     private String serveur = "http://192.168.1.102/android/SimpleHTTPTeste/teste.php";
 
-    private int inc = 0;
+    private RecepteurSending recepteur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +65,6 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
         lastImg = (ImageView) findViewById(R.id.lastImg);
         btnEnvoyer = (Button) findViewById(R.id.btnEnvoyer);
 
-        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        this.paramsNetwork();
 
         spinner = (Spinner) findViewById(R.id.typeStructure);
         String liste [] = {"police", "mairie", "sapeur pompier"};
@@ -74,9 +74,14 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
         spinner.setAdapter(dataAdapter);
 
         Bundle recu = getIntent().getExtras();
+        imageFile = recu.getString("imageFile");
+
+        recepteur = new RecepteurSending();
+        IntentFilter filter = new IntentFilter("track");
+        registerReceiver(recepteur, filter);
 
         //Toast.makeText(this, "recu "+recu.getString("imageFile"), Toast.LENGTH_LONG).show();
-        imageFile = recu.getString("imageFile");
+
         if (imageFile != null) {
 
 
@@ -84,17 +89,11 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
 
             btnEnvoyer.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View viewParam) {
-                    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                    if (ActivityCompat.checkSelfPermission(SendingActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(SendingActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
 
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 10000,
-                            0, SendingActivity.this);
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0,
-                            SendingActivity.this);
-
+                    Toast.makeText(SendingActivity.this, "Envoie en cours ", Toast.LENGTH_SHORT).show();
                     //new SendRequest().SendFile(CaptureActivity.this, imageFile,null, serveur);
+                    Intent service = new Intent(SendingActivity.this, TrackerService.class);
+                    startService(service);
 
                 }
             });
@@ -103,84 +102,15 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
 
     }
 
-    @Override
-    public void onLocationChanged(Location location) {
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
-        //TextView valLat= (TextView) findViewById(R.id.valLat);
-        //valLat.setText(String.valueOf(latitude));
-
-        //TextView valLng= (TextView) findViewById(R.id.valLng);
-        //valLng.setText(String.valueOf(longitude));
-
-
-        try {
-            Toast.makeText(this, "Nouvelle localisation: " + operateur, Toast.LENGTH_LONG).show();
-            this.commentaire = ((TextView) findViewById(R.id.commentaire)).getText().toString();
-            this.typeStructure = spinner.toString();
-            new SendRequest().SendFile(SendingActivity.this, imageFile, formuleData(), serveur);
-        } catch (JSONException e) {
-
-        }
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        locationManager.removeUpdates(this);
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        String newStatus = "";
-        switch (status) {
-            case LocationProvider.OUT_OF_SERVICE:
-                newStatus = "OUT_OF_SERVICE";
-                break;
-            case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                newStatus = "TEMPORARILY_UNAVAILABLE";
-                break;
-            case LocationProvider.AVAILABLE:
-                newStatus = "AVAILABLE";
-                break;
-        }
-
-        //Toast.makeText(getBaseContext(), "statut change", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }
-
-    public void paramsNetwork(){
-        this.MCC = telephonyManager.getSimCountryIso();
-        this.MNC = telephonyManager.getNetworkOperator()+ "--"+telephonyManager.getCellLocation().toString();
-        this.operateur = telephonyManager.getNetworkOperatorName()+"-"+telephonyManager.getSimOperator();
-        this.IMEI = telephonyManager.getDeviceId();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            this.telephone = ".."+telephonyManager.getPhoneCount() ;//.getPhoneCount();
-        }else{
-            this.telephone = telephonyManager.getSubscriberId();
-        }
 
 
 
-         /*
-        TextView valLng= (TextView) findViewById(R.id.valLng);
-        valLng.setText(String.valueOf(this.longitude));*/
-
-    }
 
     public JSONObject formuleData() throws JSONException {
         JSONObject postDataParams = new JSONObject();
         postDataParams.put("latitude", this.latitude);
         postDataParams.put("longitude", this.longitude);
+        postDataParams.put("altitude", this.altitude);
         postDataParams.put("typeStructure", this.typeStructure);
         postDataParams.put("MNC", this.MNC);
         postDataParams.put("LAC", this.LAC);
@@ -190,5 +120,38 @@ public class SendingActivity extends AppCompatActivity implements LocationListen
         postDataParams.put("operateur", this.operateur);
         postDataParams.put("commentaire", this.commentaire);
         return postDataParams;
+    }
+
+    class RecepteurSending extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //Toast.makeText(context, "Intent.", Toast.LENGTH_LONG).show();
+            if(intent.getExtras() != null) {
+
+
+                commentaire = ((TextView) findViewById(R.id.commentaire)).getText().toString();
+
+
+                latitude = intent.getExtras().getString("altitude");
+                longitude = intent.getExtras().getString("longitude");
+                altitude = intent.getExtras().getString("altitude");
+
+                MCC = intent.getExtras().getString("MCC");
+                MNC = intent.getExtras().getString("MNC");
+                operateur = intent.getExtras().getString("operateur");
+                CellID = intent.getExtras().getString("CellID");
+                telephone = intent.getExtras().getString("telephone");
+                LAC = intent.getExtras().getString("LAC");
+
+                try {
+                    new SendRequest().SendFile(SendingActivity.this, imageFile, formuleData(), serveur);
+                } catch (JSONException e) {
+                    Toast.makeText(context, "Envoi de fichier impossible...", Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+        }
     }
 }

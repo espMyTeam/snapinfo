@@ -3,9 +3,9 @@
 *fichier de configuration de la base de données
 *
 */
-	define("USERNAME", "root");
-	define("PASSWORD", "root");
-	define("BASENAME", "snapclient");
-	define("HOSTNAME", "localhost");
+	define("CLIENTUSERNAME", "root");
+	define("CLIENTPASSWORD", "root");
+	define("CLIENTBASENAME", "snapclient");
+	define("CLIENTHOSTNAME", "localhost");
 
 ?>

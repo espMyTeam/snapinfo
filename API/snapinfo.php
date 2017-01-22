@@ -1,8 +1,66 @@
 <?php
+try {
+
+	switch ($_SERVER['REQUEST_METHOD']) {
+		case 'GET':
+
+
+		
+			if(isset($_GET['ressource'])) {
+					if ($_GET['ressource'] == 'info') {
+							if(isset($_GET['id'])){ //selectionne l'info d'identifiant id
+
+							}
+							else{ //tous les infos ajoutées
+
+							}
+					}
+					else if ($_GET['ressource'] == 'structure') {
+
+					}
+					else
+							throw new Exception("Action non valide");
+				}
+				else {
+					// action par défaut
+					echo "rien!!!";
+				}
+			break;
+
+		case 'POST':
+			echo "rien!!!";
+			break;
+
+		case 'PUT':
+			echo "rien!!!";
+			break;
+
+		case 'DELETE':
+			echo "rien!!!";
+			break;
+
+		default:
+			echo "rien!!!";
+			break;
+	}
+}
+catch (Exception $e) {
+		erreur($e->getMessage());
+}
+
+
+
+
+
+
+
+
+
+
 
 // get the HTTP method, path and body of the request
 $method = $_SERVER['REQUEST_METHOD'];
-$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));//PATH_INFO contenu du lien après .php
 $input = json_decode(file_get_contents('php://input'),true);
 
 // connect to the mysql database

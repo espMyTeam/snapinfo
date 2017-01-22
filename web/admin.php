@@ -47,6 +47,40 @@
                                       <label for="exampleInputPassword1">Latitude</label>
                                       <input type="text" class="form-control" id="addLatStructure" placeholder="Saisir sa latitude" />
                                     </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Adresse</label>
+                                      <input type="text" class="form-control" id="addAddStructure" placeholder="Saisir l'adresse de la structure" />
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Contact 1</label>
+                                      <input type="text" class="form-control" id="addCon1Structure" placeholder="Saisir le contact1" />
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Contact 2</label>
+                                      <input type="text" class="form-control" id="addCon2Structure" placeholder="Saisir le contact 2" />
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">Email</label>
+                                      <input type="text" class="form-control" id="addEmailStructure" placeholder="Saisir l'email" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Type de structure</label>
+                                        <select class="form-control" id="addTypeStructure">
+                                            <?php foreach ($types2 as $key => $value) {?>
+                                            <option <?php echo "value=".$value["id"]; ?>><?php echo $value["nomStructure"]; ?></td></option>
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Zone de la structure</label>
+                                        <select class="form-control" id="addZoneStructure">
+                                            <?php foreach ($types2 as $key => $value) {?>
+                                            <option <?php echo "value=".$value["id"]; ?>><?php echo $value["nomStructure"]; ?></td></option>
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
                                   </form>
 
                                 </div>
@@ -60,12 +94,12 @@
                 </div>
                 <!-- debut autre panel-->
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-two" data-toggle="modal" data-target="#myModal">
+                    <div class="dashboard-div-wrapper bk-clr-two" data-toggle="modal" data-target="#modalModif">
                         <i  class="fa fa-edit dashboard-div-icon" ></i>
 
                          <h5>Modifier une structure </h5>
                     </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal fade" id="modalModif" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -107,24 +141,48 @@
                 </div>
                 <!-- debut autre panel-->
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-three" data-toggle="modal" data-target="#myModal">
-                        <i  class="fa fa-minus dashboard-div-icon" ></i>
+                    <div class="dashboard-div-wrapper bk-clr-three" data-toggle="modal" data-target="#modalType">
+                        <i  class="fa fa-plus-circle dashboard-div-icon" ></i>
 
-                         <h5>Supprimer une structure </h5>
+                         <h5>Ajouter un type de structure </h5>
                     </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal fade" id="modalType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">Modal title Here</h4>
+                                    <h4 class="modal-title" id="myModalLabel">Liste des types de structures</h4>
                                 </div>
                                 <div class="modal-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                  <div class="form-group">
+                                      <label for="exampleInputPassword1">Ajouter un nouveau type</label>
+                                      <input type="text" class="form-control" id="addTypeStructure" placeholder="Saisir le nouveau type" />
+                                      <hr/>
+                                        <button class="btn btn-success" onclick="envoieTypeStructure();">ajouter</button>
+                                  </div>
+                                  <hr/>
+                                  <div class="table-responsive">
+                                      <table class="table table-striped table-bordered table-hover">
+                                          <thead>
+                                              <tr>
+                                                  <th>#</th>
+                                                  <th>Type</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php foreach ($types as $key => $value) {?>
+                                              <tr>
+                                                  <td><?php echo intval($key+1);?></td>
+                                                  <td><?php echo '<input type="text" id="nomStruct'.$key.'" value="'.$value["nomStructure"].'" />'; ?></td>
+                                                  <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieModifStructure('.$key.','.$value["id"].');"><i class="fa fa-pencil"></i>';?></td>
+                                              </tr>
+                                            <?php }?>
+                                          </tbody>
+                                      </table>
+                                  </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                 </div>
                             </div>
                         </div>
@@ -135,7 +193,7 @@
                    <div class="dashboard-div-wrapper bk-clr-four" data-toggle="modal" data-target="#myModal">
                        <i  class="fa fa-cogs dashboard-div-icon" ></i>
 
-                        <h5>Simple Text Here </h5>
+                        <h5> </h5>
                    </div>
                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                        <div class="modal-dialog">

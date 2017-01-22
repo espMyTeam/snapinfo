@@ -45,12 +45,12 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".LocalisationActivity" />
 
-        <service
-            android:name=".GeolocalisationService"
-            android:enabled="false"
-            android:exported="true"></service>
+        <activity android:name=".SendingActivity" />
 
-        <activity android:name=".SendingActivity"></activity>
+        <service
+            android:name=".TrackerService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

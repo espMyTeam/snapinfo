@@ -4,8 +4,8 @@
 *
 */
 	define("USERNAME", "root");
-	define("PASSWORD", "repasser"); 
-	define("BASENAME", "snapinfo"); 
+	define("PASSWORD", "root");
+	define("BASENAME", "snapinfo");
 	define("HOSTNAME", "localhost");
 
 

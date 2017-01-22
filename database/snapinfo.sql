@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2017 at 02:58 AM
+-- Generation Time: Jan 19, 2017 at 11:33 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1-log
--- PHP Version: 7.0.8-0ubuntu0.16.04.3
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,8 @@ CREATE TABLE `info` (
   `photo` varchar(100) NOT NULL,
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
-  `dateReception` date NOT NULL,
+  `commentaire` varchar(160) DEFAULT NULL,
+  `dateReception` datetime NOT NULL,
   `utilisateur` int(11) NOT NULL,
   `typeStructure` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -67,7 +68,7 @@ CREATE TABLE `quartier` (
 --
 
 CREATE TABLE `structure` (
-  `id` int(11) NOT NULL,
+  `idStruct` int(11) NOT NULL,
   `typeStructure` int(11) NOT NULL,
   `libelle` varchar(100) NOT NULL,
   `adresse` varchar(80) NOT NULL,
@@ -87,7 +88,7 @@ CREATE TABLE `structure` (
 
 CREATE TABLE `typeStructure` (
   `id` int(11) NOT NULL,
-  `nomStructure` varchar(50) NOT NULL
+  `nomStructure` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -99,10 +100,10 @@ CREATE TABLE `typeStructure` (
 CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL,
   `telephone` varchar(20) NOT NULL,
-  `CellID` int(11) NOT NULL,
-  `MNC` int(11) NOT NULL,
-  `MCC` int(11) NOT NULL,
-  `LAC` int(11) NOT NULL,
+  `CellID` int(11) DEFAULT NULL,
+  `MNC` int(11) DEFAULT NULL,
+  `MCC` int(11) DEFAULT NULL,
+  `LAC` int(11) DEFAULT NULL,
   `operateur` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -136,7 +137,7 @@ ALTER TABLE `quartier`
 -- Indexes for table `structure`
 --
 ALTER TABLE `structure`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idStruct`),
   ADD KEY `typeStructure` (`typeStructure`);
 
 --
@@ -174,7 +175,7 @@ ALTER TABLE `quartier`
 -- AUTO_INCREMENT for table `structure`
 --
 ALTER TABLE `structure`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idStruct` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `typeStructure`
 --
@@ -201,7 +202,7 @@ ALTER TABLE `info`
 --
 ALTER TABLE `QS`
   ADD CONSTRAINT `QS_ibfk_1` FOREIGN KEY (`quartier`) REFERENCES `quartier` (`id`),
-  ADD CONSTRAINT `QS_ibfk_2` FOREIGN KEY (`structure`) REFERENCES `structure` (`id`);
+  ADD CONSTRAINT `QS_ibfk_2` FOREIGN KEY (`structure`) REFERENCES `structure` (`idStruct`);
 
 --
 -- Constraints for table `structure`

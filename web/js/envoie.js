@@ -1,18 +1,43 @@
 function envoieEnregStructure()
-   {
-       $(function()
-       {
-           var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter";
-           $.ajax({
-           type: 'POST',
-           url: param, timeout: 3000,
-           success: function(data)
-           {
+ {
+     $(function()
+     {
+         //var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter";
+         var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter&adresse="+$('#addAddStructure').val()+"&contact1="+$('#addLatStructure').val()+"&contact2="+$('#addCon1Structure').val()+"&mail="+$('#addEmailStructure')+"&type="+$('#addTypeStructure');
+         $.ajax({
+         type: 'POST',
+         url: param,
+         timeout: 3000,
+         //data: {'nomStruct':$('#addNomStructure').val(),'longStruct':$('#addLongStructure').val(),'latStruct':$('#addLatStructure').val(),'adresse':$('#addAddStructure').val(),'contact1':$('#addLatStructure').val(),'contact2':$('#addCon1Structure').val(),'mail':$('#addEmailStructure'),'action':"ajouter"},
+         success: function(data)
+         {
 
-           }, error: function() {
-           alert('La requête n\'a pas abouti'); } });
-       });
-   }
+         }, error: function() {
+         alert('La requête n\'a pas abouti'); } });
+     });
+ }
+
+function envoieTypeStructure()
+{
+  $(function()
+   {
+       var param = "../web/admin.php?typeStructure="+$('#addTypeStructure').val()+"&action=ajouterType";
+       $.ajax({
+         type: 'POST',
+         url: param,
+         timeout: 3000,
+         //data: {'nomStruct':$('#addNomStructure').val(),'longStruct':$('#addLongStructure').val(),'latStruct':$('#addLatStructure').val(),'adresse':$('#addAddStructure').val(),'contact1':$('#addLatStructure').val(),'contact2':$('#addCon1Structure').val(),'mail':$('#addEmailStructure'),'action':"ajouter"},
+         success: function(data)
+         {
+
+         }, error: function() {
+         alert('La requête n\'a pas abouti'); } });
+    });
+
+}
+
+
+
 function envoieModifStructure(id,id2)
       {
           $(function()

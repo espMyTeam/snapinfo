@@ -63,6 +63,7 @@ Class Requetes
         $result->execute(array("nomStructure"=>$nomStructure,
                                "latitude"=>$latitude,
                                "longitude"=>$longitude));
+        $result->closeCursor();
     }
     public function updateStructure($nomStructure,$latitude,$longitude,$id)
     {
@@ -71,16 +72,19 @@ Class Requetes
                                "latitude"=>$latitude,
                                "longitude"=>$longitude,
                                "id"=>$id));
+        $result->closeCursor();
     }
     public function deleteStructure($id)
     {
         $result=$this->base->prepare("DELETE FROM `structures` WHERE `structures`.`idStructure` = :id");
         $result->execute(array("id"=>$id));
+        $result->closeCursor();
     }
     public function putDonnees($donnees)
     {
         $result=$this->base->prepare("INSERT INTO `donnees`(`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $result->execute($donnees);
+        $result->closeCursor();
     }
     /*public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
     {
@@ -90,7 +94,7 @@ Class Requetes
                                "longitude"=>$longitude,
                                "latitude"=>$latitude,
                                "lieu"=>$lieu,
-                               "datePhoto"=>$datePhoto,
+                               "datePhoto"=>$datePhoto,$reqServeur->$reqServeur->$reqServeur->
                                "commentaire"=>$commentaire));
     }*/
     public function getXDerniereDonnees($idStructure,$limite)
@@ -98,6 +102,7 @@ Class Requetes
       $result=$this->base->prepare("SELECT * FROM `donnees` where idStructure = :idStructure order by idDonnees desc limit ".$limite."");
       $result->execute(array("idStructure"=>$idStructure));
       $donees=$result->fetchAll();
+      $result->closeCursor();
       return $donees;
     }
 
@@ -106,6 +111,7 @@ Class Requetes
       $result=$this->base->prepare("SELECT * FROM `donnees`");
       $result->execute(array());
       $donees=$result->fetchAll();
+      $result->closeCursor();
       return $donees;
     }
 }
