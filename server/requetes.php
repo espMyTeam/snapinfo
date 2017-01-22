@@ -132,34 +132,6 @@
 			return $this->select($req, $array_params);
 		}
 
-<<<<<<< HEAD
-		/*ajouter un nouveau type de structure*/
-		function addTypeStructure($typeStruture){
-			$result=$this->base->prepare("INSERT INTO `typeStructure` (`id`, `nomStructure`) VALUES (NULL, :typeStructure)");
-        	$result->execute(array("typeStructure" => $typeStruture));
-        	$result->closeCursor() ;
-        }
 
-        /*recuperer les types de structures*/
-		function recupTypeStructure(){
-			$result=$this->base->prepare("SELECT * FROM `typeStructure`");
-        	$result->execute(array());
-        	$types=$result->fetchAll();
-		    $result->closeCursor();
-		    return $types;
-        }
-
-=======
-		/*selectionner l'identifiant de l'utilisateur*/
-		function selectUser($telephone){
-			$req = "SELECT id FROM utilisateur where telephone =:telephone;";
-			$array_params = array(
-				"telephone" => $telephone
-			);
-			return $this->select($req, $array_params);
-		}
-
->>>>>>> origin/master
-	}
 
 ?>
