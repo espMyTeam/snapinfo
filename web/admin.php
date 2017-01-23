@@ -156,7 +156,7 @@
                                 <div class="modal-body">
                                   <div class="form-group">
                                       <label for="exampleInputPassword1">Ajouter un nouveau type</label>
-                                      <input type="text" class="form-control" id="addTypeStructure" placeholder="Saisir le nouveau type" />
+                                      <input type="text" class="form-control" id="addNewTypeStructure" placeholder="Saisir le type" />
                                       <hr/>
                                         <button class="btn btn-success" onclick="envoieTypeStructure();">ajouter</button>
                                   </div>
@@ -169,7 +169,7 @@
                                                   <th>Type</th>
                                               </tr>
                                           </thead>
-                                          <tbody>
+                                          <tbody id='intTableau'>
                                             <?php foreach ($types as $key => $value) {?>
                                               <tr>
                                                   <td><?php echo intval($key+1);?></td>

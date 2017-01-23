@@ -3,7 +3,8 @@ function envoieEnregStructure()
      $(function()
      {
          //var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter";
-         var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter&adresse="+$('#addAddStructure').val()+"&contact1="+$('#addLatStructure').val()+"&contact2="+$('#addCon1Structure').val()+"&mail="+$('#addEmailStructure')+"&type="+$('#addTypeStructure');
+         //$typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone
+         var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter&adresse="+$('#addAddStructure').val()+"&contact1="+$('#addCon1Structure').val()+"&contact2="+$('#addCon2Structure').val()+"&mail="+$('#addEmailStructure')+"&type="+$('#addTypeStructure')+"&zone="+$('#addZoneStructure');
          $.ajax({
          type: 'POST',
          url: param,
@@ -21,7 +22,7 @@ function envoieTypeStructure()
 {
   $(function()
    {
-       var param = "../web/admin.php?typeStructure="+$('#addTypeStructure').val()+"&action=ajouterType";
+       var param = "../web/admin.php?typeStructure="+$('#addNewTypeStructure').val()+"&action=ajouterType";
        $.ajax({
          type: 'POST',
          url: param,

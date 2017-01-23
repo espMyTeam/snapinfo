@@ -107,19 +107,18 @@
 
 		/*ajouter une structure*/
 		function addStructure($typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
-			$req = "INSERT INTO structure(id,typeStruture,libelle,adresse,contact1,contact2,mail,latitude,longitude,zone) VALUES(NULL,:typeStruture, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude, :zone);";
-			$array_params = array(
-				":typeStructure" => $typeStructure,
-				":libelle" => $libelle,
-				":adresse" => $adresse,
-				":contact1" => $contact1,
-				":contact2" => $contact2,
-				":mail" => $mail,
-				":latitude" => $latitude,
-				":longitude" => $longitude,
-				":zone" => $zone
-			);
-			return $this->insert($req, $array_params);
+		$result=$this->base->prepare("INSERT INTO `structure` (`idStruct`, `typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (NULL,:typeStruct,:libelle,:adresse,:contact1,:contact2,:mail,:latitude,:longitude,:zone)");
+		$result->execute(array(
+													"typeStruct" => $typeStructure,
+													"libelle" => $libelle,
+													"adresse" => $adresse,
+													"contact1" => $contact1,
+													"contact2" => $contact2,
+													"mail" => $mail,
+													"latitude" => $latitude,
+													"longitude" => $longitude,
+													"zone" => $zone
+												);
 		}
 
 		/* selectionner la structure à contacter */
@@ -132,20 +131,29 @@
 			return $this->select($req, $array_params);
 		}
 
-	/*ajouter un nouveau type de structure*/
-	function addTypeStructure($typeStruture){
-		$result=$this->base->prepare("INSERT INTO `typeStructure` (`id`, `nomStructure`) VALUES (NULL, :typeStructure)");
-      	$result->execute(array("typeStructure" => $typeStruture));
-      	$result->closeCursor() ;
-      }
+		/*ajouter un nouveau type de structure*/
+		function addTypeStructure($typeStruture){
+			$result=$this->base->prepare("INSERT INTO `typeStructure` (`id`, `nomStructure`) VALUES (NULL, :typeStructure)");
+			$result->execute(array("typeStructure" => $typeStruture));
+			$result->closeCursor();
+		}
 
-      /*recuperer les types de structures*/
-	function recupTypeStructure(){
-		$result=$this->base->prepare("SELECT * FROM `typeStructure`");
-      	$result->execute(array());
-      	$types=$result->fetchAll();
-	    $result->closeCursor();
-	    return $types;
-      }
+		/*recuperer les types de structures*/
+		function recupTypeStructure(){
+			$result=$this->base->prepare("SELECT * FROM `typeStructure`");
+			$result->execute(array());
+			$types=$result->fetchAll();
+		  $result->closeCursor();
+		  return $types;
+		}
+		/*recuperer dernières structures*/
+		function recupDernierTypeStructure(){
+			$result=$this->base->prepare("SELECT * FROM `typeStructure` order by `id` desc limit 1");
+			$result->execute(array());
+			$type=$result->fetch();
+		  $result->closeCursor();
+		  return $type;
+		}
+}
 
 ?>
