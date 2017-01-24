@@ -102,44 +102,29 @@
                 </div>
                 <div class="col-md-6">
                     <div class="alert alert-info">
-                        This is a free bootstrap admin template with basic pages you need to craft your project.
-                        Use this template for free to use for personal and commercial use.
+                        La platform SNAPInfo vous permet d'être informé en "temps réel" des faits divers capturés par les citoyens
                         <br />
-                         <strong> Some of its features are given below :</strong>
+                         <strong> Les données sont transferées à des structures tels que :</strong>
                         <ul>
                             <li>
-                                Responsive Design Framework Used
+                                Les polices
                             </li>
                             <li>
-                                Easy to use and customize
+                                Les Mairies
                             </li>
                             <li>
-                                Font awesome icons included
+                                Les gendarmeries
                             </li>
                             <li>
-                                Clean and light code used.
+                                Les Sapeurs pompiers
+                            </li>
+                            <li>
+                                ...
                             </li>
                         </ul>
 
                     </div>
-                    <div class="alert alert-success">
-                         <strong> Instructions To Use:</strong>
-                        <ul>
-                            <li>
-                               Lorem ipsum dolor sit amet ipsum dolor sit ame
-                            </li>
-                            <li>
-                                 Aamet ipsum dolor sit ame
-                            </li>
-                            <li>
-                               Lorem ipsum dolor sit amet ipsum dolor
-                            </li>
-                            <li>
-                                 Cpsum dolor sit ame
-                            </li>
-                        </ul>
 
-                    </div>
                 </div>
 
             </div>
