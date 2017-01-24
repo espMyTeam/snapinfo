@@ -106,19 +106,19 @@
 		}
 
 		/*ajouter une structure*/
-		function addStructure($typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
-		$result=$this->base->prepare("INSERT INTO `structure` (`idStruct`, `typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (NULL,:typeStruct,:libelle,:adresse,:contact1,:contact2,:mail,:latitude,:longitude,:zone)");
-		$result->execute(array(
-													"typeStruct" => $typeStructure,
-													"libelle" => $libelle,
-													"adresse" => $adresse,
-													"contact1" => $contact1,
-													"contact2" => $contact2,
-													"mail" => $mail,
-													"latitude" => $latitude,
-													"longitude" => $longitude,
-													"zone" => $zone
-												);
+		function addStructure($typeStructure, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
+            $result=$this->base->prepare("INSERT INTO `structure` (`idStruct`, `typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (NULL, :typeStruct, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude,:laZone)");
+            $result->execute(array(
+                "typeStruct" => $typeStructure,
+                "libelle" => $libelle,
+                "adresse" => $adresse,
+                "contact1" => $contact1,
+                "contact2" => $contact2,
+                "mail" => $mail,
+                "latitude" => $latitude,
+                "longitude" => $longitude,
+                "laZone" => $zone
+            ));
 		}
 
 		/* selectionner la structure à contacter */

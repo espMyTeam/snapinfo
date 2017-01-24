@@ -4,7 +4,7 @@ function envoieEnregStructure()
      {
          //var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter";
          //$typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone
-         var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter&adresse="+$('#addAddStructure').val()+"&contact1="+$('#addCon1Structure').val()+"&contact2="+$('#addCon2Structure').val()+"&mail="+$('#addEmailStructure')+"&type="+$('#addTypeStructure')+"&zone="+$('#addZoneStructure');
+         var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter&adresse="+$('#addAddStructure').val()+"&contact1="+$('#addCon1Structure').val()+"&contact2="+$('#addCon2Structure').val()+"&mail="+$('#addEmailStructure').val()+"&type="+$('#addTypeStructure').val()+"&zone="+$('#addZoneStructure').val();
          $.ajax({
          type: 'POST',
          url: param,
@@ -40,21 +40,20 @@ function envoieTypeStructure()
 
 
 function envoieModifStructure(id,id2)
-      {
-          $(function()
-          {
-              var param="../web/admin.php?nomStruct="+$('#nomStruct'+id).val()+"&longStruct="+$('#long'+id).val()+"&latStruct="+$('#lat'+id).val()+"&idStruct="+id2+"&action=modifier";
-              console.log($('#nomStruct'+id).val());
-              $.ajax({
-              type: 'POST',
-              url: param, timeout: 3000,
-              success: function(data)
-              {
+{
+    $(function()
+    {
+        var param="../web/admin.php?nomStruct="+$('#nomStruct'+id).val()+"&longStruct="+$('#long'+id).val()+"&latStruct="+$('#lat'+id).val()+"&idStruct="+id2+"&action=modifier";
+        $.ajax({
+        type: 'POST',
+        url: param, timeout: 3000,
+        success: function(data)
+        {
 
-              }, error: function() {
-              alert('La requête n\'a pas abouti'); } });
-          });
-      }
+        }, error: function() {
+        alert('La requête n\'a pas abouti'); } });
+    });
+}
 
 function envoieDeleteStructure(id)
 {

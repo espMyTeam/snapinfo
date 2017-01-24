@@ -53,15 +53,15 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Contact 1</label>
-                                      <input type="text" class="form-control" id="addCon1Structure" placeholder="Saisir le contact1" />
+                                      <input type="num" class="form-control" id="addCon1Structure" placeholder="Saisir le contact1" />
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Contact 2</label>
-                                      <input type="text" class="form-control" id="addCon2Structure" placeholder="Saisir le contact 2" />
+                                      <input type="num" class="form-control" id="addCon2Structure" placeholder="Saisir le contact 2" />
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">Email</label>
-                                      <input type="text" class="form-control" id="addEmailStructure" placeholder="Saisir l'email" />
+                                      <input type="email" class="form-control" id="addEmailStructure" placeholder="Saisir l'email" />
                                     </div>
                                     <div class="form-group">
                                         <label>Type de structure</label>
@@ -74,12 +74,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Zone de la structure</label>
-                                        <select class="form-control" id="addZoneStructure">
-                                            <?php foreach ($types2 as $key => $value) {?>
-                                            <option <?php echo "value=".$value["id"]; ?>><?php echo $value["nomStructure"]; ?></td></option>
-
-                                            <?php }?>
-                                        </select>
+                                        <input type="text" class="form-control" id="addZoneStructure" placeholder="Saisir la zone" />
                                     </div>
                                   </form>
 

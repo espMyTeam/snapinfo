@@ -24,10 +24,14 @@
   define("NOMSTRUCTURE",$structure["nomStructure"]);
 
   if($_REQUEST["action"]=="ajouter"){
-    //ajout de le structure sur le serveur
-    $reqServeur->addStructure($_REQUEST["type"],$_REQUEST["nomStruct"],$_REQUEST["adresse"],$_REQUEST["contact1"],$_REQUEST["contact2"],$_REQUEST["mail"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["zone"]);
-    //ajout de la stucture chez le client
-    $requete->putStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
+      if(isset($_REQUEST["type"]) and isset($_REQUEST["nomStruct"]) and isset($_REQUEST["adresse"]) and isset($_REQUEST["contact1"]) and isset($_REQUEST["contact2"]) and isset($_REQUEST["mail"]) and isset($_REQUEST["latStruct"]) and isset($_REQUEST["longStruct"]) and isset($_REQUEST["zone"])){
+        //ajout de la structure sur le serveur
+        $reqServeur->addStructure($_REQUEST["type"],$_REQUEST["nomStruct"],$_REQUEST["adresse"],$_REQUEST["contact1"],$_REQUEST["contact2"],$_REQUEST["mail"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["zone"]);
+        //ajout de la stucture chez le client
+        $requete->putStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
+      }else{
+        echo'<script>alert("toutes les valeurs ne sont pas insérées");</script>';
+      }
   }
   else if($_REQUEST["action"]=="modifier"){
     $requete->updateStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["idStruct"]);
