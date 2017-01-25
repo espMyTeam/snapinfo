@@ -93,6 +93,8 @@ public class LocalisationActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.valCellID)).setText(intent.getExtras().getString("CellID"));
                 ((TextView) findViewById(R.id.valTel)).setText(intent.getExtras().getString("telephone"));
                 ((TextView) findViewById(R.id.valLAC)).setText(intent.getExtras().getString("LAC"));
+
+                //JSONObject datas = intent.getExtras().getString("location");
             }
 
         }

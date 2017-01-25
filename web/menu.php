@@ -34,7 +34,7 @@ include_once("../server/baseConf.php");
     <!-- zoneSlide
     <link rel="stylesheet" type="text/css" href="assets/slide2/css/demo.css" />
     <link rel="stylesheet" type="text/css" href="assets/slide2/css/elastic_grid.min.css" />
-    <!-- /zone slide-->
+    < /zone slide-->
     <!-- zoneLeaflet-->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" media="all" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />

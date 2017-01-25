@@ -107,7 +107,7 @@
 
 		/*ajouter une structure*/
 		function addStructure($typeStructure, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
-            $result=$this->base->prepare("INSERT INTO `structure` (`idStruct`, `typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (NULL, :typeStruct, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude,:laZone)");
+            $result=$this->base->prepare("INSERT INTO `structure` (`typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (:typeStruct, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude,:laZone)");
             $result->execute(array(
                 "typeStruct" => $typeStructure,
                 "libelle" => $libelle,
@@ -153,6 +153,16 @@
 			$type=$result->fetch();
 		  $result->closeCursor();
 		  return $type;
+		}
+
+		/* selectionner les images  */
+		function selectUser($nomQuartier, $typeStructure){
+			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
+			$array_params = array(
+				":nom_quartier" => $nomQuartier,
+				":type" => $typeStructure
+			);
+			return $this->select($req, $array_params);
 		}
 }
 

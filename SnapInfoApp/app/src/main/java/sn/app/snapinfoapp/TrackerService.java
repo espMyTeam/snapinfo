@@ -113,8 +113,8 @@ public class TrackerService extends Service implements LocationListener {
 
 
         Intent intent = new Intent("track");
-        //try {
-            //intent.putExtra("location", (Serializable) this.getTrackLocation());
+       // try {
+           // intent.putExtra("location", this.getTrackLocation().toString());
             intent.putExtra("latitude", this.latitude);
             intent.putExtra("longitude", this.longitude);
             intent.putExtra("altitude", this.altitude);
@@ -127,8 +127,8 @@ public class TrackerService extends Service implements LocationListener {
             intent.putExtra("operateur", this.operateur);
 
             sendBroadcast(intent);
-        //} catch (JSONException e) {
-          //  e.printStackTrace();
+       // } catch (JSONException e) {
+         //   Toast.makeText(getBaseContext(), "Probleme de reception ", Toast.LENGTH_LONG).show();
         //}
 
 

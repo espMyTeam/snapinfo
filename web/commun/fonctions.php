@@ -3,8 +3,8 @@
 *Author:Philippe Kolama GUILAVOGUI
 **/
   //fonction de calcul d'age
-	function age($date){
-		$now=date("Y-m-d");
+function age($date){
+	$now=date("Y-m-d");
     $diffjour=floor((strtotime($now)-strtotime($date))/86400);
     if ($diffjour<30){
         $jour=$diffjour." jours";
@@ -20,38 +20,40 @@
 		  $moiss=floor($jourrestant/30)." mois";
 		  $jour=floor($jourrestant%30)." jours";
     }
-        return $an." ".$moiss;
-	}
-	//fonction de formatage de date
-	function formatDate($date){
-		$ladate=explode("-",$date);
-		return $ladate[2]."/".$ladate[1]."/".$ladate[0];
-	}
-	//fonction de formatage de dateHeure
-	function formatDateHeure($date){
-		$donnees=explode(" ",$date);
-		$ladate=explode("-",$donnees[0]);
-		return $ladate[2]."/".$ladate[1]."/".$ladate[0]." ".$donnees[1];
-	}
-	// Générateur de miniatures
-	function make_thumb($src,$dest,$desired_height) {
-  // Ouverture de l'image
-  $source_image = imagecreatefromjpeg($src);
-  $width = imagesx($source_image);
-  $height = imagesy($source_image);
+    return $an." ".$moiss;
+}
 
-  // Trouver la hauteur désirée pour la miniature, en fonction de sa largeur
+//fonction de formatage de date
+function formatDate($date){
+	$ladate=explode("-",$date);
+	return $ladate[2]."/".$ladate[1]."/".$ladate[0];
+}
+
+//fonction de formatage de dateHeure
+function formatDateHeure($date){
+	$donnees=explode(" ",$date);
+	$ladate=explode("-",$donnees[0]);
+	return $ladate[2]."/".$ladate[1]."/".$ladate[0]." ".$donnees[1];
+}
+	// Générateur de miniatures
+function make_thumb($src,$dest,$desired_height) {
+  // Ouverture de l'image
+ 	$source_image = imagecreatefromjpeg($src);
+	$width = imagesx($source_image);
+	$height = imagesy($source_image);
+
+  	// Trouver la hauteur désirée pour la miniature, en fonction de sa largeur
   	//$desired_height = floor($height*($desired_width/$width));
 	$desired_width = floor($width*($desired_height/$height));
 
   // Créer une nouvelle image (virtuelle)
-  $virtual_image = imagecreatetruecolor($desired_width,$desired_height);
+  	$virtual_image = imagecreatetruecolor($desired_width,$desired_height);
 
-  // Copie de l'image source à la taille désirée
-  imagecopyresized($virtual_image,$source_image,0,0,0,0,$desired_width,$desired_height,$width,$height);
+  	// Copie de l'image source à la taille désirée
+  	imagecopyresized($virtual_image,$source_image,0,0,0,0,$desired_width,$desired_height,$width,$height);
 
-  // Créer physiquement l'image dans le répertoire de destination
-  imagejpeg($virtual_image,$dest);
+  	// Créer physiquement l'image dans le répertoire de destination
+  	imagejpeg($virtual_image,$dest);
 }
 
 // On récupère les fichiers depuis le répertoire source

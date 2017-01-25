@@ -5,8 +5,13 @@
 	define("BASENAME", "bustracking"); //
 	define("HOSTNAME", "127.8.252.2"); */
 
-	define("USERNAME", "root");  
+	/*define("USERNAME", "root");  
 	define("PASSWORD", "root"); 
+	define("BASENAME", "snapinfo"); 
+	define("HOSTNAME", "localhost");*/
+
+	define("USERNAME", "abdoulaye");  
+	define("PASSWORD", "kamstelecom"); 
 	define("BASENAME", "snapinfo"); 
 	define("HOSTNAME", "localhost");
 
