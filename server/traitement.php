@@ -18,19 +18,6 @@
 		    if(move_uploaded_file($_FILES['photo']['tmp_name'], $filePath) ){
 		    	
 		        //echo "success";
-		    	/* insertion des infos reçus dans la base */
-				$longitude = $_POST['longitude'];	
-				$latitude = $_POST['latitude'];
-				$commentaire = $_POST['commentaire'];
-				$typeStructure = $_POST['typeStructure'];
-				$telephone = $_POST['telephone'];
-				$cellID = $_POST['CellID'];
-				$MNC = $_POST['MNC'];
-				$MCC = $_POST['MCC'];
-				$LAC = $_POST['LAC'];
-				$operateur = $_POST['operateur'];
-				$_POST['photo'] = $filePath;
-				//$ladate = date("Y-m-d H:i:s");
 				
 				$nomQuartier=" ";
 				?>
@@ -49,14 +36,6 @@
 					        contentType: 'application/json; charset=utf-8',
 						 	dataType: 'json'
 			    		}).then(function(data) {
-			       			//console.log(data);
-			       			/*$nom = data.display_name;
-			     		  	$city = data.address.city;
-			       			$state = data.address.state;
-			       			$road = data.address.road;
-			      		 	$building = data.address.building;
-			       			$nomQuartier = data.address.suburb;
-			       			$country = data.address.country;*/
 			       			//console.log(data);
 			       			/*<?php
 			       				//echo json_decode(data);

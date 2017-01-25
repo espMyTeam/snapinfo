@@ -13,6 +13,7 @@
 		$nomQuartier = $_POST['geo']['address']['suburb'];
 		$country = $_POST['geo']['address']['country'];
 
+		/* insertion des infos reçus dans la base */
 		$longitude = $_POST['recv']['longitude'];	
 		$latitude = $_POST['recv']['latitude'];
 		$commentaire = $_POST['recv']['commentaire'];

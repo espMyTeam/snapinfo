@@ -155,12 +155,11 @@
 		  return $type;
 		}
 
-		/* selectionner les images  */
-		function selectUser($nomQuartier, $typeStructure){
-			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
+		/* selectionner un utilisateur via son numéro de téléphone*/
+		function selectUser($telephone){
+			$req = "SELECT id FROM utilisateur WHERE telephone =:telephone";
 			$array_params = array(
-				":nom_quartier" => $nomQuartier,
-				":type" => $typeStructure
+				"telephone" => $telephone,
 			);
 			return $this->select($req, $array_params);
 		}
