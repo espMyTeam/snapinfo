@@ -1,3 +1,16 @@
+function alertNouveau()
+{
+    
+    
+
+    
+    $( "#dialogue" ).dialog( "open" );
+    
+}
+  
+    
+
+
 function envoieEnregStructure()
  {
      $(function()

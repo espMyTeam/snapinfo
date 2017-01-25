@@ -1,7 +1,6 @@
 <?php
 	//controleur frontal
 	try {
-
 		switch ($_SERVER['REQUEST_METHOD']) {
 			case 'GET':
 				if(isset($_GET['ressource'])) {

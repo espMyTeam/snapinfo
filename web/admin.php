@@ -262,4 +262,5 @@
 <?php
   include_once("menuBas.php");
 ?>
+<script type="text/javascript" src="js/monUI.js"></script>
 <script type="text/javascript" src="js/envoie.js"></script>

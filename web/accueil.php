@@ -15,6 +15,8 @@
 <!-- une autre row -->
 
 <!-- Portfolio Item Row -->
+
+
         <div class="row">
 
             <div class="col-md-8">
@@ -23,6 +25,7 @@
 
             <div class="col-md-4">
                 <h3>Infos sur la photo</h3>
+                <!-- ui-dialog -->
                 <ul>
                     <li><?php echo $donnees["0"]["lieu"];?></li>
                     <li><?php echo $laDate;?></li>
@@ -53,6 +56,9 @@
 
 
         <!-- /. row -->
+    
+                <p id="dialogue" title="Nouvelle image">Vous avez une nouvelle image Voulez vous l'ouvrir?</p>
+     
 
 
         <!-- Related Projects Row -->
@@ -83,3 +89,24 @@
 <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
 <script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->
+<script type="text/javascript" src="js/envoie.js"></script>
+<script type="text/javascript" src="js/monUI.js"></script>
+<script>
+    $(function() {
+        $( "#dialogue" ).dialog({
+            position:
+            modal: false,
+            //position: { my: "center", at: "center", of: window },
+            buttons: {
+                "Oui": function() { 
+                    $( this ).dialog( "close" ); 
+                },
+                "Non": function() {
+                    $( this ).dialog( "close" ); 
+                }
+            } 
+        });
+    });
+      
+    $('#dialogue').dialog();
+</script>
