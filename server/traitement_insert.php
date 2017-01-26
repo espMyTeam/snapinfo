@@ -34,19 +34,23 @@
 
 		$id_struct = $base->selectStruct($nomQuartier, $typeStructure)[0][0];
 		$libelleStruct = $base->selectStruct($nomQuartier, $typeStructure)[0][1];
-		$id_user = $base->selectUser($telephone);
+		$user = $base->selectUser($telephone);
 
-		if($id_user == 0 || $id_user == -1){
+
+		if(empty($user) || is_null($user)){
 			$id_user = $base->addParamUser($telephone, $cellID, $MNC, $MCC, $LAC, $operateur);
 			$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $commentaire, $ladate, $id_user , $id_struct);
+			echo "res";
 			
 		}
 		else{
-			$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $altitude,  $lheure, $ladate, $id_user , $id_struct);
+			//print_r($user);
+			$id_info = $base->addInfosRecus($photo, $latitude, $longitude, $commentaire, $ladate, $user[0][0] , $id_struct);
+			echo "lol";
 
 		}
 
-		echo json_encode($_POST);
+		//echo json_encode($_POST);
 	}
 
 	

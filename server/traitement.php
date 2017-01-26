@@ -3,8 +3,8 @@
 	//print_r($_FILES);
 	//echo "\n";
     if(isset($_FILES) && isset($_POST['latitude']) && isset($_POST['longitude']) && isset($_POST['typeStructure']) &&  isset($_POST['telephone'])){
-
 		
+ 			$_POST['photo'] = $filePath;
 
 		/* enregistrement de la photo dans un répertoire nommé uploads*/
 	    	$fileName = basename( $_FILES['photo']['name']);
@@ -32,7 +32,7 @@
 						$.ajax({
 			       			url: 'http://nominatim.openstreetmap.org/reverse',
 			        		method: 'GET',
-						 	data: { format:'json', lat: <?php echo "$latitude" ?>, lon: <?php echo "$longitude" ?>, zoom: zoom , addressdetails:1 },
+						 	data: { format:'json', lat: <?php echo $_POST['latitude']; ?>, lon: <?php echo $_POST['longitude']; ?>, zoom: zoom , addressdetails:1 },
 					        contentType: 'application/json; charset=utf-8',
 						 	dataType: 'json'
 			    		}).then(function(data) {

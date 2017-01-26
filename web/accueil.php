@@ -88,11 +88,11 @@
 <script  type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
-<script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->
+<!--<script type="text/javascript" src="js/mapping.js"></script>le script qui ajoute des donnees à la carte-->
 <script type="text/javascript" src="js/envoie.js"></script>
 <script type="text/javascript" src="js/monUI.js"></script>
 <script>
-    $(function() {
+    /*$(function() {
         $( "#dialogue" ).dialog({
             position:
             modal: false,
@@ -106,7 +106,7 @@
                 }
             } 
         });
-    });
+    });*/
       
-    $('#dialogue').dialog();
+   // $('#dialogue').dialog();
 </script>
