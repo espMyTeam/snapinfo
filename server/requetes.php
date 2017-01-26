@@ -106,8 +106,8 @@
 		}
 
 		/*ajouter une structure*/
-		function addStructure($typeStructure, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone){
-            $result=$this->base->prepare("INSERT INTO `structure` (`typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`, `zone`) VALUES (:typeStruct, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude,:laZone)");
+		function addStructure($typeStructure, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude){
+            $result=$this->base->prepare("INSERT INTO `structure` (`typeStructure`, `libelle`, `adresse`, `contact1`, `contact2`, `mail`, `latitude`, `longitude`) VALUES (:typeStruct, :libelle, :adresse, :contact1, :contact2, :mail, :latitude, :longitude)");
             $result->execute(array(
                 "typeStruct" => $typeStructure,
                 "libelle" => $libelle,
@@ -116,14 +116,13 @@
                 "contact2" => $contact2,
                 "mail" => $mail,
                 "latitude" => $latitude,
-                "longitude" => $longitude,
-                "laZone" => $zone
+                "longitude" => $longitude
             ));
 		}
 
 		/* selectionner la structure à contacter */
 		function selectStruct($nomQuartier, $typeStructure){
-			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier quartier.nom =:nom_quartier structure.typeStructure = quartier.typeStructure QS.typeStructure =:type";
+			$req = "SELECT id,libelle FROM quartier,QS,structure WHERE quartier.id = QS.quartier AND quartier.nom =:nom_quartier AND structure.typeStructure = quartier.typeStructure AND QS.typeStructure =:type";
 			$array_params = array(
 				":nom_quartier" => $nomQuartier,
 				":type" => $typeStructure
@@ -159,9 +158,38 @@
 		function selectUser($telephone){
 			$req = "SELECT id FROM utilisateur WHERE telephone =:telephone";
 			$array_params = array(
-				"telephone" => $telephone,
+				":telephone" => $telephone
 			);
 			return $this->select($req, $array_params);
+		}
+
+		/*Ajouter un quartier*/
+		function addQuartier($nomQuartier){
+			$req = "INSERT INTO quartier(nom) VALUES(:nom)";
+			$array_params = array(
+				":nom" => $nomQuartier
+			);
+			return $this->insert($req, $array_params);
+		}
+
+		/*selectionner quartier*/
+		function selectQuartier($nomQuartier){
+			$req = "select id from quartier WHERE t";
+			$array_params = array(
+				":nom" => $nomQuartier
+			);
+			return $this->insert($req, $array_params);
+		}
+		
+		/*Ajouter la relation entre quartier et structure QS*/
+		function addQS($quartier, $structure, $typeStructure){
+			$req = "INSERT INTO quartier(quartier,structure,typeStructure) VALUES(:quartier,:structure,:typeStructure)";
+			$array_params = array(
+				":quartier" => $Quartier,
+				":structure" => $structure,
+				":typeStructure => $typeStructure
+			);
+			return $this->insert($req, $array_params);
 		}
 }
 
