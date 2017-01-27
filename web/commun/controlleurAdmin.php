@@ -39,7 +39,11 @@
   else if($_REQUEST["action"]=="supprimer"){
     $requete->deleteStructure($_REQUEST["idStruct"]);
   }
+  else if($_REQUEST["action"]=="ajouterUser"){
+    $requete->putUser($_REQUEST["nomUser"],$_REQUEST["prenomUser"],$_REQUEST["loginUser"],$_REQUEST["passwdUser"],$_REQUEST["telUser"],$_REQUEST["mailUser"],"photo indefinie",$_REQUEST["StructUser"]);
+  }
   else if($_REQUEST["action"]=="ajouterType"){
     $reqServeur->addTypeStructure($_REQUEST["typeStructure"]);
   }
+  
 ?>

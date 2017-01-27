@@ -86,6 +86,19 @@ Class Requetes
         $result->execute($donnees);
         $result->closeCursor();
     }
+    public function putUser($nomUser,$prenomUser,$loginUser,$passwderUser,$phoneUser,$mailUser,$photoUser,$structureUser)
+    {
+        $result=$this->base->prepare("INSERT INTO `users` (`idUser`, `nomUser`, `prenomUser`, `loginUser`, `passwordUser`, `telephone`, `mail`, `photoUser`, `structureUser`, `supprimer`) VALUES (NULL, :nomUser, :prenomUser, :loginUser, :passwordUser, :telephoneUser, :mailUser, :photoUser, :structureUser, '0')");
+        $result->execute(array("nomUser"=>$nomUser, 
+                               "prenomUser"=>$prenomUser, 
+                               "loginUser"=>$loginUser, 
+                               "passwordUser"=>SHA1($passwderUser),
+                               "telephoneUser"=>$phoneUser, 
+                               "mailUser"=>$mailUser, 
+                               "photoUser"=>$photoUser, 
+                               "structureUser"=>$structureUser,));
+        $result->closeCursor();
+    }
     /*public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
     {
         $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (NULL, :idStructure, :photo, :longitude , :latitude, :lieu, :datePhoto, :commentaire)");

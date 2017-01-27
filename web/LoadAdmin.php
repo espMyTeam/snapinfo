@@ -21,7 +21,7 @@
 
                  <div class="col-md-3 col-sm-3 col-xs-6">
                     <div class="dashboard-div-wrapper bk-clr-one" data-toggle="modal" data-target="#ajouter">
-                        <i  class="fa fa-building dashboard-div-icon" ></i>
+                        <i  class="fa fa-plus dashboard-div-icon" ></i>
 
                          <h5>Ajouter une structure </h5>
                     </div>
@@ -186,65 +186,25 @@
                 <!-- debut autre panel-->
                 <div class="col-md-3 col-sm-3 col-xs-6">
                    <div class="dashboard-div-wrapper bk-clr-four" data-toggle="modal" data-target="#myModal">
-                       <i  class="fa fa-user dashboard-div-icon" ></i>
-                            
-                        <h5>Ajouter un utilisateur </h5>
+                       <i  class="fa fa-cogs dashboard-div-icon" ></i>
+
+                        <h5> </h5>
                    </div>
                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                        <div class="modal-dialog">
-                           
-                           
-                           
                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h4 class="modal-title" id="myModalLabel">Nouvel utilisateur</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                  <form id="formulaireUser">
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Nom</label>
-                                      <input type="text" class="form-control" id="addNomuser" placeholder="Saisir le nom" />
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Prenom</label>
-                                      <input type="text" class="form-control" id="addPrenomUser" placeholder="Saisir le prenom" />
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Login</label>
-                                      <input type="text" class="form-control" id="addLoginUser" placeholder="Saisir le login" />
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Mot de passe</label>
-                                      <input type="text" class="form-control" id="addPasswdUser" placeholder="Saisir le mot de passe" />
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Téléphone</label>
-                                      <input type="num" class="form-control" id="addTeluser" placeholder="Saisir le numero de téléphone" />
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Mail</label>
-                                      <input type="num" class="form-control" id="addMailUser" placeholder="Saisir le mail" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Type de structure</label>
-                                        <select class="form-control" id="addStrucureUser">
-                                            <?php foreach ($structures as $key => $value) {if($value["nomStructure"]!="admin"){?>
-                                                <option <?php echo "value=".$value["idStructure"]; ?>><?php echo $value["nomStructure"]; ?></td></option>                         
-                                            <?php }}?>
-                                        </select>
-                                    </div>
-                                  </form>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="envoieEnregUser();">Valider</button>
-                                </div>
-                            </div>
-                           
-                           
+                               <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                   <h4 class="modal-title" id="myModalLabel">Modal title Here</h4>
+                               </div>
+                               <div class="modal-body">
+                                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Save changes</button>
+                               </div>
+                           </div>
                        </div>
                    </div>
                </div>
@@ -257,19 +217,39 @@
         <!-- /.row -->
         <br/>
         <!-- row-->
-        <div class="row" >
-          <div class="row">
-            <div id="loadMax">
-                
-            </div>
-            <div>
-                <div id='loading'><img src='../web/images/loading.gif'/></div>
-            </div>
-                  
-            
-       </div>
         
-        
+            <div class="panel panel-default" id="loadMax">
+              <div class="panel-heading">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <?php $structures = array_reverse($structures);  foreach ($structures as $key => $value) {if($value["nomStructure"]!="admin"){?>
+                            <tr>
+                                <td><?php echo intval($key+1);?></td>
+                                <td><?php echo $value["nomStructure"]; ?></td>
+                                <td><?php echo $value["longitude"]; ?></td>
+                                <td><?php echo $value["latitude"]; ?></td>
+                                <td><?php echo '<button type="button" class="btn btn-default btn-circle" onclick="envoieDeleteStructure('.$value["idStructure"].');"><i class="fa fa-trash"></i>';?></td>
+                            </tr>
+                          <?php }}?>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+              <div class="panel-body-map">
+                <img src=""/>
+              </div>
+            </div>
+         
 
 
         <!-- /. row -->
@@ -280,9 +260,4 @@
 <?php
   include_once("menuBas.php");
 ?>
-<script>
-    $( "#loading" ).hide();
-    $( "#loadMax" ).load("LoadAdmin.php #loadMax"); 
-</script>
 <script type="text/javascript" src="js/monUI.js"></script>
-<script type="text/javascript" src="js/envoie.js"></script>
