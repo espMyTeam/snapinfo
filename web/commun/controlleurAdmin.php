@@ -26,7 +26,7 @@
   if($_REQUEST["action"]=="ajouter"){
       if(isset($_REQUEST["type"]) and isset($_REQUEST["nomStruct"]) and isset($_REQUEST["adresse"]) and isset($_REQUEST["contact1"]) and isset($_REQUEST["contact2"]) and isset($_REQUEST["mail"]) and isset($_REQUEST["latStruct"]) and isset($_REQUEST["longStruct"]) and isset($_REQUEST["zone"])){
         //ajout de la structure sur le serveur
-        $reqServeur->addStructure($_REQUEST["type"],$_REQUEST["nomStruct"],$_REQUEST["adresse"],$_REQUEST["contact1"],$_REQUEST["contact2"],$_REQUEST["mail"],$_REQUEST["latStruct"],$_REQUEST["longStruct"],$_REQUEST["zone"]);
+        $reqServeur->addStructure($_REQUEST["type"],$_REQUEST["nomStruct"],$_REQUEST["adresse"],$_REQUEST["contact1"],$_REQUEST["contact2"],$_REQUEST["mail"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
         //ajout de la stucture chez le client
         $requete->putStructure($_REQUEST["nomStruct"],$_REQUEST["latStruct"],$_REQUEST["longStruct"]);
       }else{
@@ -44,6 +44,16 @@
   }
   else if($_REQUEST["action"]=="ajouterType"){
     $reqServeur->addTypeStructure($_REQUEST["typeStructure"]);
+  }
+  else if($_REQUEST["action"]=="ajouterQuartier"){
+    //ajout du quartier
+    $reqServeur->addNewQuartier($_REQUEST["nomQuartier"]);
+    //recuperation de l'id du dernier quartier
+    $idQuartier=$reqServeur->getLastidQuartier();
+    //associer le quartier à la structure
+    $reqServeur->addNewStructutreQuartier($idQuartier["id"],$_REQUEST["structure"],$_REQUEST["typeStructure"]);
+    
+    
   }
   
 ?>

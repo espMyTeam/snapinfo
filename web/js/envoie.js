@@ -1,10 +1,20 @@
-function alertNouveau()
+function envoieEnregQuartier()
 {
-    
-    
-
-    
-    $( "#dialogue" ).dialog( "open" );
+    $(function()
+     {
+         var param="../web/LoadAdmin.php?nomQuartier="+$('#addNomQuartier').val()+"&structure="+$('#addStrucureQuartier').val()+"&typeStructure="+$('#addTypeStrucureQuartier').val()+"&action=ajouterQuartier";
+        $.ajax({
+         type: 'POST',
+         url: param,
+         timeout: 3000,
+         //data: {'nomStruct':$('#addNomStructure').val(),'longStruct':$('#addLongStructure').val(),'latStruct':$('#addLatStructure').val(),'adresse':$('#addAddStructure').val(),'contact1':$('#addLatStructure').val(),'contact2':$('#addCon1Structure').val(),'mail':$('#addEmailStructure'),'action':"ajouter"},
+         success: function(data)
+         {
+             //document.reload.href="LoadAdmin.php";
+             location.reload();
+         }, error: function() {
+         alert('La requête n\'a pas abouti'); } });
+     });
     
 }
   
@@ -37,10 +47,6 @@ function envoieEnregStructure()
  {
      $(function()
      {
-         var donnees = $('#formulaireUser').serialize();
-         alert("../web/LoadAdmin.php?nomUser="+$('#addNomuser').val()+"&prenomUser="+$('#addPrenomUser').val()+"&loginUser="+$('#addLoginUser').val()+"&action=ajouterUser&passwdUser="+$('#addPasswdUser').val()+"&telUser="+$('#addTeluser').val()+"&mailUser="+$('#addMailUser').val()+"&StructUser="+$('#addStrucureUser').val());
-         //var param="../web/admin.php?nomStruct="+$('#addNomStructure').val()+"&longStruct="+$('#addLongStructure').val()+"&latStruct="+$('#addLatStructure').val()+"&action=ajouter";
-         //$typeStruture, $libelle, $adresse, $contact1, $contact2, $mail, $latitude, $longitude, $zone
          var param="../web/LoadAdmin.php?nomUser="+$('#addNomuser').val()+"&prenomUser="+$('#addPrenomUser').val()+"&loginUser="+$('#addLoginUser').val()+"&action=ajouterUser&passwdUser="+$('#addPasswdUser').val()+"&telUser="+$('#addTeluser').val()+"&mailUser="+$('#addMailUser').val()+"&StructUser="+$('#addStrucureUser').val();
          $.ajax({
          type: 'POST',

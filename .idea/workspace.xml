@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7d71e4d1-4482-4890-ab07-ccb119391cbf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/snapinfo.php" afterPath="$PROJECT_DIR$/snapinfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/accueil.php" afterPath="$PROJECT_DIR$/web/accueil.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin.php" afterPath="$PROJECT_DIR$/web/admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/envoie.js" afterPath="$PROJECT_DIR$/web/js/envoie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/menu.php" afterPath="$PROJECT_DIR$/web/menu.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,7 +19,7 @@
     <favorites_list name="snapinfo" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="snapinfo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/snapinfo.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -38,7 +33,7 @@
       <file leaf-file-name="snapinfo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/snapinfo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="1185">
               <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding>
                 <marker date="1485087827000" expanded="true" signature="1813:1835" ph="select * fro... ${$table}" />
@@ -52,7 +47,7 @@
       <file leaf-file-name="accueil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/accueil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
+            <state relative-caret-position="255">
               <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
@@ -62,8 +57,8 @@
       <file leaf-file-name="envoie.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/envoie.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="90">
+              <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -103,8 +98,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
-    <option name="y" value="108" />
+    <option name="x" value="20" />
+    <option name="y" value="56" />
     <option name="width" value="1260" />
     <option name="height" value="693" />
   </component>
@@ -123,7 +118,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,7 +211,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,14 +230,15 @@
       <updated>1485274625936</updated>
       <workItem from="1485274628378" duration="8215000" />
       <workItem from="1485343213387" duration="2387000" />
+      <workItem from="1485609278082" duration="425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10602000" />
+    <option name="totallyTimeSpent" value="11027000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="108" width="1260" height="693" extended-state="0" />
+    <frame x="20" y="56" width="1260" height="693" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -275,6 +271,42 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/snapinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/snapinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <marker date="1485087827000" expanded="true" signature="1813:1835" ph="select * fro... ${$table}" />
+            <marker date="1485087827000" expanded="true" signature="1898:1932" ph="update `${$t... " />
+            <marker date="1485087827000" expanded="true" signature="1973:1998" ph="insert into `${$table}`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/accueil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/envoie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/commun/controlleurAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -287,7 +319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -303,7 +334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="130" column="14" lean-forward="true" selection-start-line="130" selection-start-column="14" selection-end-line="130" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -311,15 +341,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="117" column="40" lean-forward="true" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
-          <folding>
-            <marker date="1485284768000" expanded="true" signature="1831:2015" ph="INSERT INTO info... " />
-            <marker date="1485284768000" expanded="true" signature="2501:2622" ph="INSERT INTO utilisateur... " />
-            <marker date="1485284768000" expanded="true" signature="3048:3295" ph="INSERT INTO `structure`... " />
-            <marker date="1485284768000" expanded="true" signature="3827:4004" ph="SELECT id,li... quartier" />
-            <marker date="1485284768000" expanded="true" signature="4277:4357" ph="INSERT INTO `typeStructure`... " />
-            <marker date="1485284768000" expanded="true" signature="4561:4590" ph="SELECT * FRO... typeStructure" />
-            <marker date="1485284768000" expanded="true" signature="4816:4872" ph="SELECT * FRO... typeStructure" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -341,7 +363,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/snapinfo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
+        <state relative-caret-position="1185">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding>
             <marker date="1485087827000" expanded="true" signature="1813:1835" ph="select * fro... ${$table}" />
@@ -353,7 +375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
+        <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
@@ -361,8 +383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/envoie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="90">
+          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
           <folding />
         </state>
       </provider>

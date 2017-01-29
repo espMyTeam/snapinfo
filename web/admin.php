@@ -228,7 +228,7 @@
                                       <input type="num" class="form-control" id="addMailUser" placeholder="Saisir le mail" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Type de structure</label>
+                                        <label>Structure</label>
                                         <select class="form-control" id="addStrucureUser">
                                             <?php foreach ($structures as $key => $value) {if($value["nomStructure"]!="admin"){?>
                                                 <option <?php echo "value=".$value["idStructure"]; ?>><?php echo $value["nomStructure"]; ?></td></option>                         
@@ -259,13 +259,86 @@
         <!-- row-->
         <div class="row" >
           <div class="row">
-            <div id="loadMax">
+            <div id="loadMax" class="col-lg-9">
                 
+            </div>
+              
+            <div class="col-lg-3">
+                
+                
+                <div >
+                   <div class="dashboard-div-wrapper bk-clr-one" data-toggle="modal" data-target="#addQuartier">
+                       <i  class="fa fa-university dashboard-div-icon" ></i>
+                            
+                        <h5>Ajouter un quartier </h5>
+                   </div>
+                   <div class="modal fade" id="addQuartier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                       <div class="modal-dialog">
+                           
+                           
+                           
+                           <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Nouveau quartier</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                  <form id="">
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1">Nom du quartier</label>
+                                      <input type="text" class="form-control" id="addNomQuartier" placeholder="Saisir le nom du quartier" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Associer à une structure</label>
+                                        <select class="form-control" id="addStrucureQuartier">
+                                            <?php foreach ($structures as $key => $value) {if($value["nomStructure"]!="admin"){?>
+                                                <option <?php echo "value=".$value["idStructure"]; ?>><?php echo $value["nomStructure"]; ?></td></option>                         
+                                            <?php }}?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Type de structure</label>
+                                        <select class="form-control" id="addTypeStrucureQuartier">
+                                            <?php foreach ($types2 as $key => $value) {?>
+                                            <option <?php echo "value=".$value["nomStructure"]; ?>><?php echo $value["nomStructure"]; ?></td></option>
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                  </form>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="envoieEnregQuartier();">Valider</button>
+                                </div>
+                            </div>
+                           
+                           
+                       </div>
+                   </div>
+               </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
             </div>
             <div>
                 <div id='loading'><img src='../web/images/loading.gif'/></div>
             </div>
-                  
+          </div>        
             
        </div>
         

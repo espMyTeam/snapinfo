@@ -164,6 +164,31 @@
 		}
 
 		/*Ajouter un quartier*/
+                    /*Ajouter un quartier*/
+                    function addNewQuartier($nomQuartier){
+                            $result=$this->base->prepare("INSERT INTO quartier(`id`,`nom`) VALUES (NULL,:nom)");
+                            $result->execute(array("nom" => $nomQuartier));
+                            $result->closeCursor();
+                    }
+                    
+                    function getLastidQuartier(){
+                        $result=$this->base->prepare("SELECT * FROM `quartier` order by `id` desc limit 1");
+                        $result->execute(array());
+                        $id=$result->fetch();
+                        $result->closeCursor();
+                        return $id;
+                    }
+                    
+                    function addNewStructutreQuartier($quartier,$structure,$typeStructure){
+                            $result=$this->base->prepare("INSERT INTO `QS` (`id`, `quartier`, `structure`, `typeStructure`) VALUES (NULL,:quartier,:structure,:typeStructure)");
+                            $result->execute(array("quartier" => $quartier,
+                                                   "structure"=> $structure,
+                                                   "typeStructure"=> $typeStructure));
+                            $result->closeCursor();
+                    }
+                    
+                    
+                
 		function addQuartier($nomQuartier){
 			$req = "INSERT INTO quartier(nom) VALUES(:nom)";
 			$array_params = array(
@@ -185,9 +210,9 @@
 		function addQS($quartier, $structure, $typeStructure){
 			$req = "INSERT INTO quartier(quartier,structure,typeStructure) VALUES(:quartier,:structure,:typeStructure)";
 			$array_params = array(
-				":quartier" => $Quartier,
-				":structure" => $structure,
-				":typeStructure => $typeStructure
+				"quartier" => $Quartier,
+				"structure" => $structure,
+				"typeStructure" => $typeStructure
 			);
 			return $this->insert($req, $array_params);
 		}
