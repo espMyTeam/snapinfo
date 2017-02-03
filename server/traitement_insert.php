@@ -54,10 +54,10 @@
 	}
 
 	
-	/**echo "
+	echo "
 		<script type=text/javascript>
 		    		$.ajax({
-		    		   	url : philippe.php,
+		    		   	url : /api/snapweb/donnees,
 		    		   	type : POST,
 				   		data : 'photo=' + $filePath + '&latitude=' + $latitude + '&longitude=' + $longitude + '&commentaire=' + $commentaire + '&libelle=' + $libelleStruct, 
 		    		   	success : function(reponse){ 
@@ -68,5 +68,5 @@
 
 		    		});
 		</script>
-	";*/
+	";
 ?>
