@@ -4,7 +4,7 @@
 	<body>
 		<h1>Testes pour la communication entre le mobile et le serveur snapinfo</h1>
 		<br/><br/>
-		<form method="POST" action="http://192.168.1.105/workflow/snapInfo/snapinfo/server/traitement.php" enctype="multipart/form-data" >
+		<form method="POST" action="http://localhost:8888/SNAP/snapinfo/server/traitement.php" enctype="multipart/form-data" >
 			Photo: <input type="file" name="photo"/><br/><br/>
 			Longitude: <input type="text" name="longitude"/><br/><br/>
 			Latitude: <input type="text" name="latitude"/><br/><br/>

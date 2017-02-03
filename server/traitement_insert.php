@@ -57,9 +57,9 @@
 	echo "
 		<script type=text/javascript>
 		    		$.ajax({
-		    		   	url : /api/snapweb/donnees,
+		    		   	url : /api/snapweb,
 		    		   	type : POST,
-				   		data : 'photo=' + $filePath + '&latitude=' + $latitude + '&longitude=' + $longitude + '&commentaire=' + $commentaire + '&libelle=' + $libelleStruct, 
+				   		data : 'photo=' + <?php echo $filePath; ?> + '&latitude=' + <?php echo $latitude; ?> + '&longitude=' + <?php echo $longitude; ?> + '&commentaire=' + <?php echo $commentaire; ?> + '&libelle=' + <?php echo $libelleStruct; ?> + 'idStructure='+<?php echo $id_struct; ?>, 
 		    		   	success : function(reponse){ 
 	           
 		    			},error : function(resultat, statut, erreur){

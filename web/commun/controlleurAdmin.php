@@ -7,8 +7,8 @@
   include_once("../server/baseConf.php");//connexion base serveur
   include_once("../server/requetes.php");//lien requetes base serveur
   //----- Vers client -------
-  include_once("../web/database/Requetes.class.php");//lien requetes base client
   include_once("../web/database/baseConf.php");//connexion base client
+  include_once("../web/database/Requetes.class.php");//lien requetes base client
   //----- Vers les fonctions utiles ------
   include_once("../web/commun/fonctions.php");
   //----- Instanciation des objets de base de données

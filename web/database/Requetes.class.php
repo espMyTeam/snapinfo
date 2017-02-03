@@ -80,12 +80,12 @@ Class Requetes
         $result->execute(array("id"=>$id));
         $result->closeCursor();
     }
-    public function putDonnees($donnees)
+    /*public function putDonnees($donnees)
     {
         $result=$this->base->prepare("INSERT INTO `donnees`(`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $result->execute($donnees);
         $result->closeCursor();
-    }
+    }*/
     public function putUser($nomUser,$prenomUser,$loginUser,$passwderUser,$phoneUser,$mailUser,$photoUser,$structureUser)
     {
         $result=$this->base->prepare("INSERT INTO `users` (`idUser`, `nomUser`, `prenomUser`, `loginUser`, `passwordUser`, `telephone`, `mail`, `photoUser`, `structureUser`, `supprimer`) VALUES (NULL, :nomUser, :prenomUser, :loginUser, :passwordUser, :telephoneUser, :mailUser, :photoUser, :structureUser, '0')");
@@ -99,7 +99,7 @@ Class Requetes
                                "structureUser"=>$structureUser,));
         $result->closeCursor();
     }
-    /*public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
+    public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
     {
         $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (NULL, :idStructure, :photo, :longitude , :latitude, :lieu, :datePhoto, :commentaire)");
         $result->execute(array("idStructure"=>$idStructure,
@@ -107,9 +107,9 @@ Class Requetes
                                "longitude"=>$longitude,
                                "latitude"=>$latitude,
                                "lieu"=>$lieu,
-                               "datePhoto"=>$datePhoto,$reqServeur->$reqServeur->$reqServeur->
+                               "datePhoto"=>$datePhoto,
                                "commentaire"=>$commentaire));
-    }*/
+    }
     public function getXDerniereDonnees($idStructure,$limite)
     {
       $result=$this->base->prepare("SELECT * FROM `donnees` where idStructure = :idStructure order by idDonnees desc limit ".$limite."");

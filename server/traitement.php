@@ -13,9 +13,10 @@
 	    	
 	        $filePath = strtr($fileName, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 	        $filePath = preg_replace('/([^.a-z0-9]+)/i', '-', $filePath);
-	        $filePath = "../uploads/$filePath";
+	        $filePath = "../web/images/large/$filePath";
+	        $filePath2 = "../web/images/tempo/$filePath";
 
-		    if(move_uploaded_file($_FILES['photo']['tmp_name'], $filePath) ){
+		    if(move_uploaded_file($_FILES['photo']['tmp_name'], $filePath)){
 		    	
 		        //echo "success";
 				
