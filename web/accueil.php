@@ -33,7 +33,7 @@
                     <li><?php echo $donnees["0"]["distance"];?></li>
                 </ul>
                 <h3>Commentaire de l'auteur</h3>
-                <p class="text-justify"> <?php echo $donnees["0"]["commentaire"];?> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <p class="text-justify"> <?php echo $donnees["0"]["commentaire"];?></p>
             </div>
 
         </div>
@@ -92,21 +92,43 @@
 <script type="text/javascript" src="js/envoie.js"></script>
 <script type="text/javascript" src="js/monUI.js"></script>
 <script>
-    /*$(function() {
+    
+    $(function() {
+        function bis() {
+                var vu = '<?php echo $requete->testVue($_SESSION["user"]["idStructure"]);?>';
+                var vu_array=vu.split("**");
+                if(vu_array[1]==0)
+                {
+                    alertBi();
+                    var update = '<?php echo $requete->updateVue($_SESSION["user"]["idStructure"]);?>';
+                }      
+                
+        };
+        setInterval(bis,10000);
+    });
+    
+    
+    
+    
+    /*
+    function alertBi()
+    {
         $( "#dialogue" ).dialog({
-            position:
+            //position:
             modal: false,
-            //position: { my: "center", at: "center", of: window },
+            position: { my: "center", at: "center", of: window },
             buttons: {
                 "Oui": function() { 
-                    $( this ).dialog( "close" ); 
+                    location.reload();
+                    document.location.href="accueil.php?"; 
                 },
                 "Non": function() {
                     $( this ).dialog( "close" ); 
                 }
             } 
         });
-    });*/
-      
-   // $('#dialogue').dialog();
+    }
+     */
+    //alertBi();
+    //$('#dialogue').dialog();
 </script>

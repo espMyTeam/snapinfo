@@ -5,8 +5,8 @@
     if(isset($_REQUEST["login"]))
     {
       session_start();
-      include_once("../web/database/Requetes.class.php");
       include_once("../web/database/baseConf.php");
+      include_once("../web/database/Requetes.class.php");
       $requete = new Requetes(CLIENTHOSTNAME,CLIENTBASENAME,CLIENTUSERNAME,CLIENTPASSWORD);
       //on teste que cet utilisateur existe dans la base de données, si oui valeur vaudra 1
       $user=$requete->authentification($_REQUEST["login"],SHA1($_REQUEST["password"]));
@@ -35,6 +35,5 @@
           exit();
       }
 
-    }
-
+    }  
 ?>

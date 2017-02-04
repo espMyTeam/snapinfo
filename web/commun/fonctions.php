@@ -75,7 +75,7 @@ function get_file_extension($file_name) {
   return substr(strrchr($file_name,'.'),1);
 }
 //creer miniature
-function miniaturisateur($images_dir,$thumbs_dir){//dossier source et dossier de destination
+function miniaturisateur($images_dir,$thumbs_dir,$copydir){//dossier source et dossier de destination
 
 		// Largeur des miniatures
 		$thumbs_width = 100;
@@ -97,7 +97,8 @@ function miniaturisateur($images_dir,$thumbs_dir){//dossier source et dossier de
 
 		      // Si l'extension est reconnue alors on génère la miniature
 		      if($extension) {
-		        make_thumb($images_dir.$file,$thumbnail_image,$thumbs_width);
+		        make_thumb($images_dir.$file,$thumbnail_image,$thumbs_width);//minia turisation de l'image
+                        rename($images_dir.$file,$copydir.$file);//deplacement de l'image
 		      }
 		    }
 		  }

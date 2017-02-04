@@ -21,12 +21,13 @@
   $date=explode(" ",$donnees["0"]["datePhoto"]);
   //formatage de la date en style français
   $laDate=formatDate($date["0"]);
-  $_SESSION['donnees']=$donnees;
-  miniaturisateur("../web/images/tempo/","../web/images/thumbs/");
+  $_SESSION['donnees']=$donnees; 
+  //miniaturiser les images du dossier tempo vers thumbs
+  miniaturisateur("../web/images/tempo/","../web/images/thumbs/","../web/images/large/");
 ?>
 
 <script type="text/javascript">
     var donnees = <?php print_r(json_encode($_SESSION['donnees'])); ?>;
     var structure = <?php print_r(json_encode($structure)); ?>;
-    //mise des données dans une varieble javascrit afin de mapping
+    //mise des données dans une variable javascrit afin de mapping
 </script>

@@ -10,10 +10,16 @@
 	define("BASENAME", "snapinfo"); 
 	define("HOSTNAME", "localhost");*/
 
-	define("USERNAME", "abdoulaye");  
+	/*define("USERNAME", "abdoulaye");  
 	define("PASSWORD", "kamstelecom"); 
 	define("BASENAME", "snapinfo"); 
+	define("HOSTNAME", "localhost")*/
+        
+        define("USERNAME", "root");  
+	define("PASSWORD", "root"); 
+	define("BASENAME", "snapinfo"); 
 	define("HOSTNAME", "localhost");
+
 
 	//nextbus-esp.ucad.sn
 /*	define("USERNAMEFTP", "nextbus16c11");   

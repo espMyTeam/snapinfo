@@ -9,7 +9,7 @@ function envoieEnregQuartier()
          timeout: 3000,
          //data: {'nomStruct':$('#addNomStructure').val(),'longStruct':$('#addLongStructure').val(),'latStruct':$('#addLatStructure').val(),'adresse':$('#addAddStructure').val(),'contact1':$('#addLatStructure').val(),'contact2':$('#addCon1Structure').val(),'mail':$('#addEmailStructure'),'action':"ajouter"},
          success: function(data)
-         {
+         {            
              //document.reload.href="LoadAdmin.php";
              location.reload();
          }, error: function() {
@@ -18,7 +18,24 @@ function envoieEnregQuartier()
     
 }
   
-    
+function alertBi()
+    {
+        $( "#dialogue" ).dialog({
+            //position:
+            modal: false,
+            position: { my: "center", at: "center", of: window },
+            buttons: {
+                "Oui": function() { 
+                    location.reload();
+                    document.location.href="accueil.php?";
+                    
+                },
+                "Non": function() {
+                    $( this ).dialog( "close" ); 
+                }
+            } 
+        });
+    }    
 
 
 function envoieEnregStructure()

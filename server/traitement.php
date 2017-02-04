@@ -6,20 +6,16 @@
 		
  			$_POST['photo'] = $filePath;
 
-		/* enregistrement de la photo dans un répertoire nommé uploads*/
+		/* enregistrement de la photo dans un répertoire nommé tempo */
 	    	$fileName = basename( $_FILES['photo']['name']);
 	    	$extensions = array('.png', '.gif', '.jpg', '.jpeg');
 	    	$taille = filesize($_FILES['photo']['tmp_name']);
 	    	
 	        $filePath = strtr($fileName, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 	        $filePath = preg_replace('/([^.a-z0-9]+)/i', '-', $filePath);
-	        $filePath = "../web/images/large/$filePath";
-	        $filePath2 = "../web/images/tempo/$filePath";
+	        $filePath = "../web/images/tempo/$filePath";
 
 		    if(move_uploaded_file($_FILES['photo']['tmp_name'], $filePath)){
-		    	
-		        //echo "success";
-				
 				$nomQuartier=" ";
 				?>
 				<script type='text/javascript' src='../web/jquery/jquery.js'></script>
@@ -37,10 +33,8 @@
 					        contentType: 'application/json; charset=utf-8',
 						 	dataType: 'json'
 			    		}).then(function(data) {
-			       			//console.log(data);
-			       			/*<?php
-			       				//echo json_decode(data);
-			       			?>*/
+			       			console.log(data);
+			       			
 			       			$.ajax({
 				       			url: './traitement_insert.php',
 				        		method: 'POST',
@@ -56,9 +50,6 @@
 				</script>
 
 				<?php
-
-				
-
 		    } else{
 		        echo "fail";
 		    }

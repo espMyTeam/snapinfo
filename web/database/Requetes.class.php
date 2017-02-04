@@ -99,24 +99,45 @@ Class Requetes
                                "structureUser"=>$structureUser,));
         $result->closeCursor();
     }
-    public function putDonnees($idStructure,$photo,$longitude,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
+    
+    public function putDonnees($idStructure,$photo,$longitude,$latitude,$lieu,$datePhoto,$commentaire)
     {
-        $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`) VALUES (NULL, :idStructure, :photo, :longitude , :latitude, :lieu, :datePhoto, :commentaire)");
+        $result=$this->base->prepare("INSERT INTO `donnees` (`idDonnees`, `idStructure`, `photo`, `longitude`, `latitude`, `lieu`, `datePhoto`, `commentaire`, `vu`) VALUES (NULL, :idStructure, :photo, :longitude, :latitude, :lieu, :laDate, :commentaire, '0')");
         $result->execute(array("idStructure"=>$idStructure,
-                               "photo"=>$photo,
-                               "longitude"=>$longitude,
+                               "photo"=>$photo, 
+                               "longitude"=>$longitude, 
                                "latitude"=>$latitude,
-                               "lieu"=>$lieu,
-                               "datePhoto"=>$datePhoto,
+                               "lieu"=>$lieu, 
+                               "laDate"=> $datePhoto,//date("Y-m-d H:i:s"), 
                                "commentaire"=>$commentaire));
+        $result->closeCursor();
+        
     }
+    
+    public function testVue($idStructure)
+    {
+      $result=$this->base->prepare("SELECT * FROM `donnees` where idStructure = :idStructure order by idDonnees desc limit 1");
+      $result->execute(array("idStructure"=>$idStructure));
+      $donnees=$result->fetch();
+      $result->closeCursor();
+       echo $donnees['idDonnees']."**".$donnees['vu'];
+    }
+    
+    public function updateVue($idStructure)
+    {
+      $result=$this->base->prepare("UPDATE `donnees` SET `vu` = '1' WHERE idStructure = :idStructure");
+      $result->execute(array("idStructure"=>$idStructure));
+      $result->closeCursor();
+      return 'Ok';
+    }
+    
     public function getXDerniereDonnees($idStructure,$limite)
     {
       $result=$this->base->prepare("SELECT * FROM `donnees` where idStructure = :idStructure order by idDonnees desc limit ".$limite."");
       $result->execute(array("idStructure"=>$idStructure));
-      $donees=$result->fetchAll();
+      $donnees=$result->fetchAll();
       $result->closeCursor();
-      return $donees;
+      return $donnees;
     }
 
     public function getAllDonnees()

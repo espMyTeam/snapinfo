@@ -53,7 +53,7 @@
     //associer le quartier à la structure
     $reqServeur->addNewStructutreQuartier($idQuartier["id"],$_REQUEST["structure"],$_REQUEST["typeStructure"]);
     
-    
+    echo $idQuartier["id"]." ".$_REQUEST["structure"]." ".$_REQUEST["typeStructure"];
   }
   
 ?>
