@@ -1,8 +1,8 @@
 <?php
 //les données reçues --- photo-latitude-longitude-commentaire-libelle-idStructure
     //Connexion à la base de données  
-        //include_once("../server/baseConf.php");//connexion base serveur
-        //include_once("../server/requetes.php");//lien requetes base serveur
+        include_once("../server/baseConf.php");//connexion base serveur
+        include_once("../server/requetes.php");//lien requetes base serveur
         //----- Vers client -------
         include_once("../web/database/baseConf.php");//connexion base client
         include_once("../web/database/Requetes.class.php");//lien requetes base client
@@ -16,13 +16,12 @@
         
 try {
 
-	switch ($_SERVER['REQUEST_METHOD']) {
-            case 'POST':        
-                $requete->putDonnees($_REQUEST("idStructure"),$_REQUEST("photo"),$_REQUEST("longitude"),$_REQUEST("longitude"),$_REQUEST("latitude"),$_REQUEST("lieu"),$_REQUEST("datePhoto"),$_REQUEST("commentaire"));
-                break;
-            default:
-                echo "rien!!!";
-                break;
+	if($_SERVER['REQUEST_METHOD']=="POST") {
+
+        echo $_REQUEST["idStructure"]." ".$_REQUEST["photo"]." ".$_REQUEST["longitude"]." ".$_REQUEST["latitude"]." ".$_REQUEST["lieu"]." ".$_REQUEST["datePhoto"]." ".$_REQUEST["commentaire"];
+
+        $requete->putDonnees($_REQUEST["idStructure"],$_REQUEST["photo"],$_REQUEST["longitude"],$_REQUEST["latitude"],$_REQUEST["lieu"],$_REQUEST["datePhoto"],$_REQUEST["commentaire"]);
+
 
         }
     }
