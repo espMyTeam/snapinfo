@@ -88,11 +88,10 @@
 <script  type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="leaflet/leaflet-src.js"></script>
 <script type="text/javascript" src="leaflet/leaflet-realtime.js"></script>
-<!--<script type="text/javascript" src="js/mapping.js"></script>le script qui ajoute des donnees à la carte-->
+<script type="text/javascript" src="js/mapping.js"></script><!--le script qui ajoute des donnees à la carte-->
 <script type="text/javascript" src="js/envoie.js"></script>
 <script type="text/javascript" src="js/monUI.js"></script>
-<script>
-    
+<script>  
     $(function() {
         function bis() {
                 var vu = '<?php echo $requete->testVue($_SESSION["user"]["idStructure"]);?>';
@@ -106,29 +105,4 @@
         };
         setInterval(bis,10000);
     });
-    
-    
-    
-    
-    /*
-    function alertBi()
-    {
-        $( "#dialogue" ).dialog({
-            //position:
-            modal: false,
-            position: { my: "center", at: "center", of: window },
-            buttons: {
-                "Oui": function() { 
-                    location.reload();
-                    document.location.href="accueil.php?"; 
-                },
-                "Non": function() {
-                    $( this ).dialog( "close" ); 
-                }
-            } 
-        });
-    }
-     */
-    //alertBi();
-    //$('#dialogue').dialog();
 </script>
