@@ -14,7 +14,7 @@ and open the template in the editor.
             <input type="text" name="idStructure" value="2"/>
             <input type="text" name="photo" value="photo"/>
             <input type="text" name="longitude" value="-17.23452"/>
-            <input type="text" name="latitude" value="14.1345"/>
+            <input type="text" name="latitude" value="14.13453"/>
             <input type="text" name="lieu"value="lieu"/>
             <input type="text" name="datePhoto" value="2017-02-08 00:00:00"/>
             <input type="text" name="commentaire" value="commentaire"/>
