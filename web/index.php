@@ -32,7 +32,6 @@
                     &nbsp;&nbsp;
                     <strong>Support: </strong>+221 77 777 77 77
                 </div>
-
             </div>
         </div>
     </header>
@@ -46,16 +45,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html" >
-
                     <img src="images/logo.png" width="50%"  style="position:absolute;left:30%;top:120%;"/>
                 </a>
 
             </div>
-
-            </div>
-        </div><!-- fin nav-bar-->
+        </div>
+    </div><!-- fin nav-bar-->
     <!-- LOGO HEADER END-->
-
     <!-- MENU SECTION END-->
     <div class="content-wrapper" style="margin-top:10%;">
         <div class="container">
@@ -64,7 +60,6 @@
                     <h4 class="page-head-line"> Veillez vous identifier </h4>
 
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-md-6">
